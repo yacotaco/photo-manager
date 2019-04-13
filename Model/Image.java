@@ -67,4 +67,9 @@ public class Image {
     public void setTag(String tag) {
         this.tagList.add(tag);
     }
+
+    public String toString() {
+        return this.path + " " + this.author + " " + this.location + " "
+        + this.date + " " + this.tagList;
+    }
 }
