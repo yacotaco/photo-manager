@@ -26,6 +26,7 @@ public class Image {
         this.location = location;
         this.date = date;
         this.tagList.add(tag);
+        validate();
     }
 
     public String getPath() {
@@ -71,5 +72,12 @@ public class Image {
     public String toString() {
         return this.path + " " + this.author + " " + this.location + " "
         + this.date + " " + this.tagList;
+    }
+
+    private void validate() {
+        // check if path is not empty
+        if(path.isEmpty()) {
+            throw new IllegalArgumentException("Path cannot be empty!");
+        }
     }
 }
