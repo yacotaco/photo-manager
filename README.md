@@ -9,4 +9,4 @@
  * Sort images by parameter
  * Search image by parameter
 
-### As it is desktop GUI application, MVC design pattern is used to manage data, view and user input.
+ MVC design pattern is used to manage data, view and user input.
