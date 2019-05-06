@@ -2,6 +2,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 // import javax.awt.BorderLayout;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.awt.KeyEvent;
 
 /**
  * View
@@ -36,10 +38,23 @@ public class View {
 
         private JMenuBar menuBar;
         private JMenu menu;
+        private JMenuItem menuOpenItem;
+        private JMenuItem menuExitItem;
+
+        /** 
+        @param menuBar 
+        @param menu
+        @param menuOpenItem 
+        @param menuExitItem
+        */
 
         public Menu() {
             menuBar = new JMenuBar();
             menu = new JMenu("File");
+            menuOpenItem = new JMenuItem("Open");
+            menu.add(menuOpenItem);
+            menuExitItem = new JMenuItem("Exit");
+            menu.add(menuExitItem);
             menuBar.add(menu);
         }
     }
