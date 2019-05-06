@@ -27,7 +27,7 @@ public class View {
             frame = new JFrame("PhotoManager");
             //frame.getContentPane().setLayout(new BorderLayout());
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(500, 120);
+            frame.setSize(500, 420);
             frame.setLocationRelativeTo(null);
             frame.setJMenuBar(menuBar);
             frame.setVisible(true);
