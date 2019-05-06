@@ -39,12 +39,14 @@ public class View {
         private JMenuBar menuBar;
         private JMenu menu;
         private JMenuItem menuOpenItem;
+        private JMenuItem menuSaveItem;
         private JMenuItem menuExitItem;
 
         /** 
         @param menuBar 
         @param menu
         @param menuOpenItem 
+        @param menuSaveItem
         @param menuExitItem
         */
 
@@ -53,10 +55,12 @@ public class View {
             menu = new JMenu("File");
             menuOpenItem = new JMenuItem("Open");
             menu.add(menuOpenItem);
+            menuSaveItem = new JMenuItem("Save");
+            menu.add(menuSaveItem);
             menuExitItem = new JMenuItem("Exit");
             menu.add(menuExitItem);
             menuBar.add(menu);
         }
     }
 }
-    
+
