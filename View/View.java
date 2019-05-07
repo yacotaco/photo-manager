@@ -43,7 +43,10 @@ public class View {
         // Add menu bar to frame 
         frame.setJMenuBar(menuBar);
         frame.setVisible(true);
+    }
 
+    public JFrame getFrame() {
+        return this.frame;
     }
        
     public JMenuBar getMenuBar() {
