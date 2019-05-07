@@ -10,85 +10,53 @@ import javax.awt.KeyEvent;
  */
 public class View {
 
-    private Menu menu;
+    private JFrame frame;
+    private JMenu menu;
     private JMenuBar menuBar;
     private JMenuItem menuOpenItem;
     private JMenuItem menuExitItem;
+    private JMenuItem menuSaveItem;
+       
+    /** 
+    @param frame holds all componanets of UI.
+    */
     
     public View() {
-        this.menu = new Menu();
-        this.menuExitItem = menu.getMenuExitItem();
-        this.menuOpenItem = menu.getMenuOpenItem();
-        this.menuBar = menu.getMenuBar();
-        new MainFrameView(this.menuBar);
+        // Add frame parameters
+        frame = new JFrame("PhotoManager");
+        //frame.getContentPane().setLayout(new BorderLayout());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 420);
+        frame.setLocationRelativeTo(null);
+        
+        // Add menu bar with items
+        menuBar = new JMenuBar();
+        menu = new JMenu("File");
+        menuOpenItem = new JMenuItem("Open");
+        menu.add(menuOpenItem);
+        menuSaveItem = new JMenuItem("Save");
+        menu.add(menuSaveItem);
+        menuExitItem = new JMenuItem("Exit");
+        menu.add(menuExitItem);
+        menuBar.add(menu);
+
+        // Add menu bar to frame 
+        frame.setJMenuBar(menuBar);
+        frame.setVisible(true);
+
+    }
+       
+    public JMenuBar getMenuBar() {
+        return this.menuBar;
     }
 
-    public JMenuItem getOpenItem() {
+    public JMenuItem getMenuOpenItem() {
         return this.menuOpenItem;
     }
 
-    public JMenuItem getExitItem() {
+    public JMenuItem getMenuExitItem() {
         return this.menuExitItem;
     }
 
-    public class MainFrameView {
-
-        private JFrame frame;
-
-        /** 
-        @param frame holds all componanets of UI.
-        */
-
-        public MainFrameView(JMenuBar menuBar) {
-            frame = new JFrame("PhotoManager");
-            //frame.getContentPane().setLayout(new BorderLayout());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(500, 420);
-            frame.setLocationRelativeTo(null);
-            frame.setJMenuBar(menuBar);
-            frame.setVisible(true);
-        }
-    }
-
-    public class Menu {
-
-        private JMenuBar menuBar;
-        private JMenu menu;
-        private JMenuItem menuOpenItem;
-        private JMenuItem menuSaveItem;
-        private JMenuItem menuExitItem;
-
-        /** 
-        @param menuBar 
-        @param menu
-        @param menuOpenItem 
-        @param menuSaveItem
-        @param menuExitItem
-        */
-
-        public Menu() {
-            menuBar = new JMenuBar();
-            menu = new JMenu("File");
-            menuOpenItem = new JMenuItem("Open");
-            menu.add(menuOpenItem);
-            menuSaveItem = new JMenuItem("Save");
-            menu.add(menuSaveItem);
-            menuExitItem = new JMenuItem("Exit");
-            menu.add(menuExitItem);
-            menuBar.add(menu);
-        }
-
-        public JMenuBar getMenuBar() {
-            return this.menuBar;
-        }
-
-        public JMenuItem getMenuOpenItem() {
-            return this.menuOpenItem;
-        }
-
-        public JMenuItem getMenuExitItem() {
-            return this.menuExitItem;
-        }
-    }
 }
 
