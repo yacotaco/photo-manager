@@ -12,13 +12,19 @@ public class View {
 
     private Menu menu;
     private JMenuBar menuBar;
+    private JMenuItem menuOpenItem;
     private JMenuItem menuExitItme;
     
     public View() {
         this.menu = new Menu();
         this.menuExitItme = menu.getMenuExitItem();
+        this.menuOpenItem = menu.getMenuOpenItem();
         this.menuBar = menu.getMenuBar();
         new MainFrameView(this.menuBar);
+    }
+
+    public JMenuItem getOpenItem() {
+        return this.menuOpenItem;
     }
 
     public JMenuItem getExitItem() {
@@ -74,6 +80,10 @@ public class View {
 
         public JMenuBar getMenuBar() {
             return this.menuBar;
+        }
+
+        public JMenuItem getMenuOpenItem() {
+            return this.menuOpenItem;
         }
 
         public JMenuItem getMenuExitItem() {
