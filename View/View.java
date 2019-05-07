@@ -52,7 +52,7 @@ public class View {
         menuBar.add(menu);
 
         // scrole pane
-        listScrollPane = new JScrollPane(checkBoxesJList);
+        listScrollPane = new JScrollPane();
         pictureScrollPane = new JScrollPane();
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                            listScrollPane, pictureScrollPane);
