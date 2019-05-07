@@ -9,10 +9,20 @@ import javax.awt.KeyEvent;
  * View
  */
 public class View {
+
+    private Menu menu;
+    private JMenuBar menuBar;
+    private JMenuItem menuExitItme;
     
     public View() {
-        JMenuBar menuBar = new Menu().menuBar;
-        new MainFrameView(menuBar);
+        this.menu = new Menu();
+        this.menuExitItme = menu.getMenuExitItem();
+        this.menuBar = menu.getMenuBar();
+        new MainFrameView(this.menuBar);
+    }
+
+    public JMenuItem getExitItem() {
+        return this.menuExitItme;
     }
 
     public class MainFrameView {
@@ -60,6 +70,14 @@ public class View {
             menuExitItem = new JMenuItem("Exit");
             menu.add(menuExitItem);
             menuBar.add(menu);
+        }
+
+        public JMenuBar getMenuBar() {
+            return this.menuBar;
+        }
+
+        public JMenuItem getMenuExitItem() {
+            return this.menuExitItem;
         }
     }
 }
