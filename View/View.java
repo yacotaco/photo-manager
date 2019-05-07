@@ -1,9 +1,16 @@
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JMenu;
 // import javax.awt.BorderLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+
+import java.awt.Color;
+
 import javax.awt.KeyEvent;
+import java.awt.Dimension;
 
 /**
  * View
@@ -16,6 +23,10 @@ public class View {
     private JMenuItem menuOpenItem;
     private JMenuItem menuExitItem;
     private JMenuItem menuSaveItem;
+    private JSplitPane splitPane;
+    private JScrollPane listScrollPane;
+    private JScrollPane pictureScrollPane;
+    private Dimension minimumSize;
        
     /** 
     @param frame holds all componanets of UI.
@@ -24,7 +35,7 @@ public class View {
     public View() {
         // Add frame parameters
         frame = new JFrame("PhotoManager");
-        //frame.getContentPane().setLayout(new BorderLayout());
+        // frame.getContentPane().setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 420);
         frame.setLocationRelativeTo(null);
@@ -40,7 +51,24 @@ public class View {
         menu.add(menuExitItem);
         menuBar.add(menu);
 
-        // Add menu bar to frame 
+        // scrole pane
+        listScrollPane = new JScrollPane(checkBoxesJList);
+        pictureScrollPane = new JScrollPane();
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                           listScrollPane, pictureScrollPane);
+
+        splitPane.setOneTouchExpandable(true);
+        splitPane.setDividerLocation(150);
+
+        //Provide minimum sizes for the two components in the split pane
+        minimumSize = new Dimension(100, 50);
+        listScrollPane.setMinimumSize(minimumSize);
+        pictureScrollPane.setMinimumSize(minimumSize);
+        
+        // split pane
+        frame.add(splitPane); 
+
+        // menu bar 
         frame.setJMenuBar(menuBar);
         frame.setVisible(true);
     }
