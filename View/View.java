@@ -6,9 +6,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.awt.KeyEvent;
@@ -57,12 +59,12 @@ public class View {
         menuBar.add(menu);
 
         // panel
-        pane = new JPanel();
-
+        pane = new JPanel(new BorderLayout());
         // list and list model
         listModel = new DefaultListModel();
         list = new JList(listModel);
-        pane.add(list);
+
+        pane.add(list, BorderLayout.CENTER);
 
          // scrole pane
         listScrollPane = new JScrollPane(pane);
@@ -109,6 +111,5 @@ public class View {
     public DefaultListModel getListModel() {
         return this.listModel;
     }
-
 }
 
