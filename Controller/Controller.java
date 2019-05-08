@@ -76,7 +76,7 @@ public class Controller {
             String date = itemSplit[3];
             String tags = itemSplit[4];
             imageList.add(new Image(imagePath, imageAuthor, location, date, tags));
-            view.setLabels(imagePath);
+            view.setListLabels(imagePath);
           }
         }
        
