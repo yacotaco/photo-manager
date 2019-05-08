@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 public class Controller {
 
     private View view;
+    private ArrayList<Image> imageList = new ArrayList<Image>();
 
     Controller(View view) {
         this.view =  view;
@@ -62,8 +63,9 @@ public class Controller {
     }
 
     public void readDatabaseFile(String path) {
-      ArrayList<Image> imageList = new ArrayList<Image>();
-  
+      imageList.clear();
+      view.getListModel().removeAllElements();
+      
       try (Stream<String> stream = Files.lines(Paths.get(path))) {
         List<String> list = stream.collect(Collectors.toList()); 
         

@@ -106,5 +106,9 @@ public class View {
         this.listModel.addElement(element);
     }
 
+    public DefaultListModel getListModel() {
+        return this.listModel;
+    }
+
 }
 
