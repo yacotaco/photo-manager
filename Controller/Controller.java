@@ -55,8 +55,7 @@ public class Controller {
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             path = fc.getSelectedFile().getPath();
-            readDatabaseFile(path);
-          
+            readDatabaseFile(path); 
         }
       
       }  
@@ -64,7 +63,7 @@ public class Controller {
 
     public void readDatabaseFile(String path) {
       ArrayList<Image> imageList = new ArrayList<Image>();
-    
+  
       try (Stream<String> stream = Files.lines(Paths.get(path))) {
         List<String> list = stream.collect(Collectors.toList()); 
         
@@ -77,9 +76,10 @@ public class Controller {
             String date = itemSplit[3];
             String tags = itemSplit[4];
             imageList.add(new Image(imagePath, imageAuthor, location, date, tags));
+            view.setLabels(imagePath);
           }
         }
-        
+       
       } catch (ArrayIndexOutOfBoundsException | IOException e) {
         // check format of database 
         JOptionPane.showMessageDialog(view.getFrame(), "Cant read database!");
