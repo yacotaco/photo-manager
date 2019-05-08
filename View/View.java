@@ -1,9 +1,11 @@
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JMenu;
 // import javax.awt.BorderLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
@@ -27,6 +29,9 @@ public class View {
     private JScrollPane listScrollPane;
     private JScrollPane pictureScrollPane;
     private Dimension minimumSize;
+    private JPanel pane;
+    private JList list;
+    private DefaultListModel listModel;
        
     /** 
     @param frame holds all componanets of UI.
@@ -51,8 +56,16 @@ public class View {
         menu.add(menuExitItem);
         menuBar.add(menu);
 
-        // scrole pane
-        listScrollPane = new JScrollPane();
+        // panel
+        pane = new JPanel();
+
+        // list and list model
+        listModel = new DefaultListModel();
+        list = new JList(listModel);
+        pane.add(list);
+
+         // scrole pane
+        listScrollPane = new JScrollPane(pane);
         pictureScrollPane = new JScrollPane();
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                            listScrollPane, pictureScrollPane);
@@ -87,6 +100,10 @@ public class View {
 
     public JMenuItem getMenuExitItem() {
         return this.menuExitItem;
+    }
+
+    public void setLabels(String element){
+        this.listModel.addElement(element);
     }
 
 }
