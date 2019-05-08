@@ -2,7 +2,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JMenu;
-// import javax.awt.BorderLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -15,6 +14,9 @@ import java.awt.Color;
 
 import javax.awt.KeyEvent;
 import java.awt.Dimension;
+import javax.swing.JTextField;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 
 /**
  * View
@@ -34,6 +36,12 @@ public class View {
     private JPanel pane;
     private JList list;
     private DefaultListModel listModel;
+    private JPanel editDialog;
+    private JTextField imageNameDialog;
+    private JTextField authorDialog;
+    private JTextField locationDialog;
+    private JTextField dateDialog;
+    private JTextField tagsDialog;
        
     /** 
     @param frame holds all componanets of UI.
@@ -63,6 +71,26 @@ public class View {
         // list and list model
         listModel = new DefaultListModel();
         list = new JList(listModel);
+
+        // Edit dialog
+        imageNameDialog = new JTextField(15);
+        authorDialog = new JTextField(15);
+        locationDialog = new JTextField(15);
+        dateDialog = new JTextField(15);
+        tagsDialog = new JTextField(15);
+
+        editDialog = new JPanel();
+        editDialog.setLayout(new BoxLayout(editDialog, BoxLayout.Y_AXIS));
+        editDialog.add(new JLabel("Path:"));
+        editDialog.add(imageNameDialog);
+        editDialog.add(new JLabel("Author:"));
+        editDialog.add(authorDialog);
+        editDialog.add(new JLabel("Location:"));
+        editDialog.add(locationDialog);
+        editDialog.add(new JLabel("Date:"));
+        editDialog.add(dateDialog);
+        editDialog.add(new JLabel("Tags:"));
+        editDialog.add(tagsDialog);
 
         pane.add(list, BorderLayout.CENTER);
 
@@ -115,5 +143,10 @@ public class View {
     public JList getList(){
         return this.list;
     }
+
+    public JPanel getEditDialog(){
+        return this.editDialog;
+    }
+
 }
 
