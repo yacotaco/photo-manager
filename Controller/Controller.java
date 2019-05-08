@@ -65,26 +65,41 @@ public class Controller {
     public void readDatabaseFile(String path) {
       imageList.clear();
       view.getListModel().removeAllElements();
-      
+      String imagePath;
+      String imageName;
+      String imageAuthor;
+      String location;
+      String date;
+      String tags;
+
       try (Stream<String> stream = Files.lines(Paths.get(path))) {
         List<String> list = stream.collect(Collectors.toList()); 
         
         for (String item : list) {
           if(item.length() > 0) {
             String[] itemSplit = item.split(";");
-            String imagePath = itemSplit[0];
-            String imageName = getImageNameFromPath(imagePath);
-            String imageAuthor = itemSplit[1];
-            String location = itemSplit[2];
-            String date = itemSplit[3];
-            String tags = itemSplit[4];
-            imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
-            view.setListLabels(imageName);
+            if(itemSplit.length > 1) {
+              imagePath = itemSplit[0];
+              imageName = getImageNameFromPath(imagePath);
+              imageAuthor = itemSplit[1];
+              location = itemSplit[2];
+              date = itemSplit[3];
+              tags = itemSplit[4];
+              imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
+              view.setListLabels(imageName);
+            } else if(itemSplit.length == 1) {
+              imagePath = itemSplit[0];
+              imageName = getImageNameFromPath(imagePath);
+              imageList.add(new Image(imageName, imagePath, "", "", "", ""));
+              view.setListLabels(imageName);
+            }
+          
           }
         }
-       
+      
       } catch (ArrayIndexOutOfBoundsException | IOException e) {
         // check format of database 
+        e.printStackTrace();
         JOptionPane.showMessageDialog(view.getFrame(), "Cant read database!");
       }
     }
