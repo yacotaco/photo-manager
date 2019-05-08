@@ -2,11 +2,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFileChooser;
-import javax.lang.File;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  * Read
@@ -39,6 +44,7 @@ public class Controller {
     public class OpenActionListener implements ActionListener {
       final JFileChooser fc = new JFileChooser();
       String path;
+      Stream<String> stream;
 
       public OpenAction() {};
 
@@ -49,19 +55,34 @@ public class Controller {
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             path = fc.getSelectedFile().getPath();
-            readFile(path);
+            readDatabaseFile(path);
+          
         }
       
       }  
     }
 
-    public void readFile(String path) {
+    public void readDatabaseFile(String path) {
+      ArrayList<Image> imageList = new ArrayList<Image>();
+    
       try (Stream<String> stream = Files.lines(Paths.get(path))) {
-
-        stream.forEach(System.out::println);
-  
-      } catch (IOException e) {
-        e.printStackTrace();
+        List<String> list = stream.collect(Collectors.toList()); 
+        
+        for (String item : list) {
+          if(item.length() > 0) {
+            String[] itemSplit = item.split(";");
+            String imagePath = itemSplit[0];
+            String imageAuthor = itemSplit[1];
+            String location = itemSplit[2];
+            String date = itemSplit[3];
+            String tags = itemSplit[4];
+            imageList.add(new Image(imagePath, imageAuthor, location, date, tags));
+          }
+        }
+        
+      } catch (ArrayIndexOutOfBoundsException | IOException e) {
+        // check format of database 
+        JOptionPane.showMessageDialog(view.getFrame(), "Cant read database!");
       }
     }
 }
