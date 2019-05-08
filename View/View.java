@@ -102,7 +102,7 @@ public class View {
         return this.menuExitItem;
     }
 
-    public void setLabels(String element){
+    public void setListLabels(String element){
         this.listModel.addElement(element);
     }
 
