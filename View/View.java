@@ -111,5 +111,9 @@ public class View {
     public DefaultListModel getListModel() {
         return this.listModel;
     }
+    
+    public JList getList(){
+        return this.list;
+    }
 }
 
