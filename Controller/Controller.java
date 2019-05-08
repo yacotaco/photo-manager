@@ -71,12 +71,13 @@ public class Controller {
           if(item.length() > 0) {
             String[] itemSplit = item.split(";");
             String imagePath = itemSplit[0];
+            String imageName = getImageNameFromPath(imagePath);
             String imageAuthor = itemSplit[1];
             String location = itemSplit[2];
             String date = itemSplit[3];
             String tags = itemSplit[4];
-            imageList.add(new Image(imagePath, imageAuthor, location, date, tags));
-            view.setListLabels(imagePath);
+            imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
+            view.setListLabels(imageName);
           }
         }
        
@@ -84,6 +85,12 @@ public class Controller {
         // check format of database 
         JOptionPane.showMessageDialog(view.getFrame(), "Cant read database!");
       }
+    }
+
+    public String getImageNameFromPath(String imagePath) {
+      String temp[] = imagePath.split("/");
+      String imageName = temp[temp.length-1];
+      return imageName;
     }
 }
 
