@@ -6,13 +6,15 @@ import java.util.List;
  */
 public class Image {
 
+    private String imageName;
     private String path;
     private String author;
     private String location;
     private String date;
     private List<String> tagList = new ArrayList<String>();
     
-    /** 
+    /**
+    @param imageName name of image. 
     @param path to image directory.
     @param author of image.
     @param location where image was taken.
@@ -20,13 +22,22 @@ public class Image {
     @param tag for image(as list ex. family, vacation, landscape) 
     */
     
-    public Image(String path, String author, String location, String date, String tag) {
+    public Image(String imageName, String path, String author, String location, String date, String tag) {
+        this.imageName = imageName;
         this.path = path;
         this.author = author;
         this.location = location;
         this.date = date;
         this.tagList.add(tag);
         validate();
+    }
+
+    public String getImageName() {
+        return this.imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public String getPath() {
