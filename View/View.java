@@ -268,5 +268,25 @@ public class View {
     public JPanel getAddDialog() {
         return this.addDialog;
     }
+
+    public String getAddPathDialog() {
+        return this.addPathDialog.getText();
+    }
+
+    public String getAddAuthorDialog() {
+        return this.addAuthorDialog.getText();
+    }
+
+    public String getAddLocationDialog() {
+        return this.addLocationDialog.getText();
+    }
+
+    public String getAddDateDialog() {
+        return this.addDateDialog.getText();
+    }
+
+    public String getAddTagsDialog() {
+        return this.addTagsDialog.getText();
+    }
 }
 
