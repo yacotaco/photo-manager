@@ -5,6 +5,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -17,6 +18,7 @@ import java.awt.Dimension;
 import javax.swing.JTextField;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JPopupMenu;
 
 /**
  * View
@@ -42,6 +44,17 @@ public class View {
     private JTextField locationDialog;
     private JTextField dateDialog;
     private JTextField tagsDialog;
+    private JPopupMenu listPopupMenu;
+    private JMenuItem listPopupMenuAdd;
+    private JMenuItem listPopupMenuDelete;
+    private JMenu listPopupMenuSortAsc;
+    private JMenuItem subMenuSortAscAuthor;
+    private JMenuItem subMenuSortAscLocation;
+    private JMenuItem subMenuSortAscDate;
+    private JMenu listPopupMenuSortDesc;
+    private JMenuItem subMenuSortDescAuthor;
+    private JMenuItem subMenuSortDescLocation;
+    private JMenuItem subMenuSortDescDate;
        
     /** 
     @param frame holds all componanets of UI.
@@ -65,6 +78,37 @@ public class View {
         menuExitItem = new JMenuItem("Exit");
         menu.add(menuExitItem);
         menuBar.add(menu);
+
+        // drop down menu for list 
+        listPopupMenu = new JPopupMenu();
+        listPopupMenuAdd = new JMenuItem("Add");
+        listPopupMenuDelete = new JMenuItem("Delete");
+        listPopupMenuSortAsc = new JMenu("Sort ascending by");
+        listPopupMenuSortDesc = new JMenu("Sort descending by");
+
+        // sort ascending submenu
+        subMenuSortAscAuthor = new JMenuItem("Author");
+        subMenuSortAscLocation = new JMenuItem("Location");
+        subMenuSortAscDate = new JMenuItem("Date");
+
+        listPopupMenuSortAsc.add(subMenuSortAscAuthor);
+        listPopupMenuSortAsc.add(subMenuSortAscLocation);
+        listPopupMenuSortAsc.add(subMenuSortAscDate);
+
+        // sort descending submenu
+        subMenuSortDescAuthor = new JMenuItem("Author");
+        subMenuSortDescLocation = new JMenuItem("Location");
+        subMenuSortDescDate = new JMenuItem("Date");
+
+        listPopupMenuSortDesc.add(subMenuSortDescAuthor);
+        listPopupMenuSortDesc.add(subMenuSortDescLocation);
+        listPopupMenuSortDesc.add(subMenuSortDescDate);
+
+        // combine submenu
+        listPopupMenu.add(listPopupMenuAdd);
+        listPopupMenu.add(listPopupMenuDelete);
+        listPopupMenu.add(listPopupMenuSortAsc);
+        listPopupMenu.add(listPopupMenuSortDesc);
 
         // panel
         pane = new JPanel(new BorderLayout());
@@ -186,6 +230,10 @@ public class View {
 
     public void setTagsDialog(String tagsDialog) {
         this.tagsDialog.setText(tagsDialog);
+    }
+
+    public JPopupMenu getListPopupMenu() {
+        return this.listPopupMenu;
     }
 }
 
