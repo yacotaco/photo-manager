@@ -55,6 +55,12 @@ public class View {
     private JMenuItem subMenuSortDescAuthor;
     private JMenuItem subMenuSortDescLocation;
     private JMenuItem subMenuSortDescDate;
+    private JPanel addDialog;
+    private JTextField addPathDialog;
+    private JTextField addAuthorDialog;
+    private JTextField addLocationDialog;
+    private JTextField addDateDialog;
+    private JTextField addTagsDialog;
        
     /** 
     @param frame holds all componanets of UI.
@@ -115,6 +121,7 @@ public class View {
         // list and list model
         listModel = new DefaultListModel();
         list = new JList(listModel);
+        pane.add(list, BorderLayout.CENTER);
 
         // Edit dialog
         pathDialog = new JTextField(15);
@@ -136,7 +143,25 @@ public class View {
         editDialog.add(new JLabel("Tags:"));
         editDialog.add(tagsDialog);
 
-        pane.add(list, BorderLayout.CENTER);
+        // Add dialog
+        addPathDialog = new JTextField(15);
+        addAuthorDialog = new JTextField(15);
+        addLocationDialog = new JTextField(15);
+        addDateDialog = new JTextField(15);
+        addTagsDialog = new JTextField(15);
+
+        addDialog = new JPanel();
+        addDialog.setLayout(new BoxLayout(addDialog, BoxLayout.Y_AXIS));
+        addDialog.add(new JLabel("Path:"));
+        addDialog.add(addPathDialog);
+        addDialog.add(new JLabel("Author:"));
+        addDialog.add(addAuthorDialog);
+        addDialog.add(new JLabel("Location:"));
+        addDialog.add(addLocationDialog);
+        addDialog.add(new JLabel("Date:"));
+        addDialog.add(addDateDialog);
+        addDialog.add(new JLabel("Tags:"));
+        addDialog.add(addTagsDialog);
 
          // scrole pane
         listScrollPane = new JScrollPane(pane);
@@ -234,6 +259,14 @@ public class View {
 
     public JPopupMenu getListPopupMenu() {
         return this.listPopupMenu;
+    }
+
+    public JMenuItem getListPopupMenuAdd() {
+        return this.listPopupMenuAdd;
+    }
+
+    public JPanel getAddDialog() {
+        return this.addDialog;
     }
 }
 
