@@ -54,8 +54,7 @@ public class Controller {
     public class OpenActionListener implements ActionListener {
       final JFileChooser fc = new JFileChooser();
       String path;
-      Stream<String> stream;
-
+      
       public OpenAction() {};
 
       @Override
