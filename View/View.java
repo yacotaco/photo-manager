@@ -37,7 +37,7 @@ public class View {
     private JList list;
     private DefaultListModel listModel;
     private JPanel editDialog;
-    private JTextField imageNameDialog;
+    private JTextField pathDialog;
     private JTextField authorDialog;
     private JTextField locationDialog;
     private JTextField dateDialog;
@@ -73,7 +73,7 @@ public class View {
         list = new JList(listModel);
 
         // Edit dialog
-        imageNameDialog = new JTextField(15);
+        pathDialog = new JTextField(15);
         authorDialog = new JTextField(15);
         locationDialog = new JTextField(15);
         dateDialog = new JTextField(15);
@@ -82,7 +82,7 @@ public class View {
         editDialog = new JPanel();
         editDialog.setLayout(new BoxLayout(editDialog, BoxLayout.Y_AXIS));
         editDialog.add(new JLabel("Path:"));
-        editDialog.add(imageNameDialog);
+        editDialog.add(pathDialog);
         editDialog.add(new JLabel("Author:"));
         editDialog.add(authorDialog);
         editDialog.add(new JLabel("Location:"));
