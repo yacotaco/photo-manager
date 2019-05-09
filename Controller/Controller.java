@@ -124,8 +124,11 @@ public class Controller {
         }
       
         @Override
-        public void mousePressed(MouseEvent arg0) {
-          
+        public void mousePressed(MouseEvent event) {
+          if (SwingUtilities.isRightMouseButton(event)) {
+            int index = view.getList().locationToIndex(event.getPoint());
+            view.getListPopupMenu().show(event.getComponent(), event.getX(), event.getY());
+          }
         }
       
         @Override
