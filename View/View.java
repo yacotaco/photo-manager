@@ -148,5 +148,24 @@ public class View {
         return this.editDialog;
     }
 
+    public String getPathDialog() {
+        return this.pathDialog.getText();
+    }
+
+    public String getAuthorDialog() {
+        return this.authorDialog.getText();
+    }
+
+    public String getLocationDialog() {
+        return this.locationDialog.getText();
+    }
+
+    public String getDateDialog() {
+        return this.dateDialog.getText();
+    }
+
+    public String getTagsDialog() {
+        return this.tagsDialog.getText();
+    }
 }
 
