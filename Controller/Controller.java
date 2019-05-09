@@ -1,3 +1,4 @@
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -34,6 +35,7 @@ public class Controller {
         view.getMenuExitItem().addActionListener(new ExitActionListener());
         view.getMenuOpenItem().addActionListener(new OpenActionListener());
         view.getList().addMouseListener(new ListListener());
+        view.getListPopupMenuAdd().addActionListener(new AddActionListener());
     }
 
     
@@ -170,6 +172,29 @@ public class Controller {
 
             }
             
+          }
+        }
+      }
+
+      public class AddActionListener implements ActionListener {
+        
+        public AddActionListener(){};
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          int result = JOptionPane.showConfirmDialog(null, view.getAddDialog(), "Add", JOptionPane.OK_CANCEL_OPTION);
+          
+          // fix adding tags 
+          // add fields validation
+          if(result == JOptionPane.OK_OPTION) {
+            String imagePath = view.getAddPathDialog();
+            String imageName = getImageNameFromPath(imagePath);
+            String imageAuthor = view.getAddAuthorDialog();
+            String location = view.getAddLocationDialog();
+            String date = view.getAddDateDialog();
+            String tags = view.getAddTagsDialog();
+            imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
+            view.setListLabels(imageName);
           }
         }
       }
