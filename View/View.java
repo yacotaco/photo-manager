@@ -167,5 +167,25 @@ public class View {
     public String getTagsDialog() {
         return this.tagsDialog.getText();
     }
+
+    public void setPathDialog(String pathDialog) {
+        this.pathDialog.setText(pathDialog);
+    }
+
+    public void setAuthorDialog(String authorDialog) {
+        this.authorDialog.setText(authorDialog);
+    }
+
+    public void setLocationDialog(String locationDialog) {
+        this.locationDialog.setText(locationDialog);
+    }
+
+    public void setDateDialog(String dateDialog) {
+        this.dateDialog.setText(dateDialog);
+    }
+
+    public void setTagsDialog(String tagsDialog) {
+        this.tagsDialog.setText(tagsDialog);
+    }
 }
 
