@@ -288,5 +288,9 @@ public class View {
     public String getAddTagsDialog() {
         return this.addTagsDialog.getText();
     }
+
+    public JMenuItem getListPopupMenuDelete() {
+        return this.listPopupMenuDelete;
+    }
 }
 
