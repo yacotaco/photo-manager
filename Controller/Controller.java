@@ -36,6 +36,7 @@ public class Controller {
         view.getMenuOpenItem().addActionListener(new OpenActionListener());
         view.getList().addMouseListener(new ListListener());
         view.getListPopupMenuAdd().addActionListener(new AddActionListener());
+        view.getListPopupMenuDelete().addActionListener(new DeleteActionListener());
     }
 
     
@@ -195,6 +196,23 @@ public class Controller {
             String tags = view.getAddTagsDialog();
             imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
             view.setListLabels(imageName);
+          }
+        }
+      }
+
+      public class DeleteActionListener implements ActionListener, MouseListener {
+        
+        public DeleteActionListener(){};
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          int index = view.getList().getSelectedIndex();
+          
+          if(index > -1) {
+            imageList.remove(index);
+            view.getListModel().remove(index);
+          } else {
+            JOptionPane.showMessageDialog(null, "List is empty!");
           }
         }
       }
