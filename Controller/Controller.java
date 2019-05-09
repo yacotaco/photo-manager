@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  * Read
@@ -139,7 +140,7 @@ public class Controller {
       
         @Override
         public void mouseClicked(MouseEvent event) {
-          if(event.getClickCount() == 2) {
+          if(SwingUtilities.isLeftMouseButton(event) && event.getClickCount() == 2) {
             int index = view.getList().locationToIndex(event.getPoint());
             if(index != -1) {
               view.setPathDialog(imageList.get(index).getPath());
