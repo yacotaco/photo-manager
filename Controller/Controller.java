@@ -18,6 +18,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import sun.tools.tree.ThisExpression;
+
 /**
  * Read
  */
@@ -119,7 +121,7 @@ public class Controller {
     }
 
     public class ListListener implements MouseListener {
-    
+
         @Override
         public void mouseReleased(MouseEvent arg0) {
           
@@ -199,14 +201,13 @@ public class Controller {
         }
       }
 
-      public class DeleteActionListener implements ActionListener, MouseListener {
+      public class DeleteActionListener implements ActionListener {
         
         public DeleteActionListener(){};
 
         @Override
         public void actionPerformed(ActionEvent event) {
           int index = view.getList().getSelectedIndex();
-          
           if(index > -1) {
             imageList.remove(index);
             view.getListModel().remove(index);
