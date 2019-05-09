@@ -1,5 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFileChooser;
 
@@ -29,8 +32,10 @@ public class Controller {
     public void initControler(){
         view.getMenuExitItem().addActionListener(new ExitActionListener());
         view.getMenuOpenItem().addActionListener(new OpenActionListener());
+        view.getList().addMouseListener(new ListListener());
     }
 
+    
     public class ExitActionListener implements ActionListener {
       
       public ExitAction(){};
@@ -109,5 +114,60 @@ public class Controller {
       String imageName = temp[temp.length-1];
       return imageName;
     }
+
+    public class ListListener implements MouseListener {
+    
+        @Override
+        public void mouseReleased(MouseEvent arg0) {
+          
+        }
+      
+        @Override
+        public void mousePressed(MouseEvent arg0) {
+          
+        }
+      
+        @Override
+        public void mouseExited(MouseEvent arg0) {
+          
+        }
+      
+        @Override
+        public void mouseEntered(MouseEvent arg0) {
+          
+        }
+      
+        @Override
+        public void mouseClicked(MouseEvent event) {
+          if(event.getClickCount() == 2) {
+            int index = view.getList().locationToIndex(event.getPoint());
+            if(index != -1) {
+              view.setPathDialog(imageList.get(index).getPath());
+              view.setAuthorDialog(imageList.get(index).getAuthor());
+              view.setLocationDialog(imageList.get(index).getLocation());
+              view.setDateDialog(imageList.get(index).getDate());
+              view.setTagsDialog(imageList.get(index).getTag());
+        
+              int result = JOptionPane.showConfirmDialog(null, view.getEditDialog(),
+              "Edit", JOptionPane.OK_CANCEL_OPTION);
+            
+              if(result == JOptionPane.OK_OPTION) {
+                // update list view
+                String imageName = getImageNameFromPath(view.getPathDialog());
+                view.getListModel().set(index, imageName);
+                getImageNameFromPath(view.getPathDialog());
+                
+                imageList.get(index).setPath(view.getPathDialog());
+                imageList.get(index).setAuthor(view.getAuthorDialog());
+                imageList.get(index).setLocation(view.getLocationDialog());
+                imageList.get(index).setDate(view.getDateDialog());
+                imageList.get(index).setTag(view.getTagsDialog());
+              }
+
+            }
+            
+          }
+        }
+      }
 }
 
