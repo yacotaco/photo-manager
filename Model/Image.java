@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
  * Image model.  
  */
-public class Image {
+public class Image implements Comparator<Image> {
 
     private String imageName;
     private String path;
@@ -91,4 +92,16 @@ public class Image {
             throw new IllegalArgumentException("Path cannot be empty!");
         }
     }
+
+    public static Comparator<Image> authorComparator = new Comparator<Image>() {         
+
+        @Override         
+    
+        public int compare(Image image1, Image image2) {             
+    
+          return (int) (image1.getAuthor().compareTo(image2.getAuthor()));         
+    
+        }     
+    
+      };       
 }
