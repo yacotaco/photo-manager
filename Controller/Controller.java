@@ -193,20 +193,25 @@ public class Controller {
           int result = JOptionPane.showConfirmDialog(null, view.getAddDialog(), "Add", JOptionPane.OK_CANCEL_OPTION);
           // fix adding tags 
           // add fields validation
-          if(result == JOptionPane.OK_OPTION) {
-            String imagePath = view.getAddPathDialog();
-            String imageName = getImageNameFromPath(imagePath);
-            String imageAuthor = view.getAddAuthorDialog();
-            String location = view.getAddLocationDialog();
-            String date = view.getAddDateDialog();
-            String tags = view.getAddTagsDialog();
-            if(view.getListModel().contains(imageName) == false) {
-              imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
-              view.setListLabels(imageName);
-            } else {
-              JOptionPane.showMessageDialog(null, "Image is on list!");
+          try {
+            if(result == JOptionPane.OK_OPTION) {
+              String imagePath = view.getAddPathDialog();
+              String imageName = getImageNameFromPath(imagePath);
+              String imageAuthor = view.getAddAuthorDialog();
+              String location = view.getAddLocationDialog();
+              String date = view.getAddDateDialog();
+              String tags = view.getAddTagsDialog();
+              if(view.getListModel().contains(imageName) == false) {
+                imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
+                view.setListLabels(imageName);
+              } else {
+                JOptionPane.showMessageDialog(null, "Image is on list!");
+              }
             }
+          } catch (IllegalArgumentException e) {
+              JOptionPane.showMessageDialog(null, "Path cannot be empty!");
           }
+          
         }
       }
 
