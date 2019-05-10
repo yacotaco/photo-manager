@@ -17,6 +17,7 @@ import java.util.stream.Stream;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import java.util.Collections;
 
 /**
  * Read
@@ -279,6 +280,17 @@ public class Controller {
         public void actionPerformed(ActionEvent event) {
           System.out.println("empty location listener");
         }
+      }
+
+      public class ImageSorter {
+
+          public ArrayList<Image> getSortedAscByAuthor() {
+            Collections.sort(imageList, Image.authorComparator);         
+
+            return imageList;     
+        
+          }       
+          
       }
 }
 
