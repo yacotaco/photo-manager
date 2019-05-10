@@ -103,5 +103,17 @@ public class Image implements Comparator<Image> {
     
         }     
     
-      };       
+    };
+    
+    public static Comparator<Image> dateComparator = new Comparator<Image>() {         
+
+        @Override         
+    
+        public int compare(Image image1, Image image2) {             
+    
+          return (int) (image1.getDate().compareTo(image2.getDate()));         
+    
+        }     
+    
+    };      
 }
