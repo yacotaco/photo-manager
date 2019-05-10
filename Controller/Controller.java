@@ -264,21 +264,21 @@ public class Controller {
       public class SortDescAuthorListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
-          System.out.println("empty author listener");
+          new ImageSorter().getSortedDescByAuthor();
         }
       }
 
       public class SortDescDateListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
-          System.out.println("empty date listener");
+          new ImageSorter().getSortedDescByDate();
         }
       }
 
       public class SortDescLocationListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
-          System.out.println("empty location listener");
+          new ImageSorter().getSortedDescByLocation();
         }
       }
 
