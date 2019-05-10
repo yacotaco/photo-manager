@@ -47,6 +47,7 @@ public class View {
     private JPopupMenu listPopupMenu;
     private JMenuItem listPopupMenuAdd;
     private JMenuItem listPopupMenuDelete;
+    private JMenuItem listPopupMenuSearch;
     private JMenu listPopupMenuSortAsc;
     private JMenuItem subMenuSortAscAuthor;
     private JMenuItem subMenuSortAscLocation;
@@ -89,6 +90,7 @@ public class View {
         listPopupMenu = new JPopupMenu();
         listPopupMenuAdd = new JMenuItem("Add");
         listPopupMenuDelete = new JMenuItem("Delete");
+        listPopupMenuSearch = new JMenuItem("Search");
         listPopupMenuSortAsc = new JMenu("Sort ascending by");
         listPopupMenuSortDesc = new JMenu("Sort descending by");
 
@@ -113,6 +115,7 @@ public class View {
         // combine submenu
         listPopupMenu.add(listPopupMenuAdd);
         listPopupMenu.add(listPopupMenuDelete);
+        listPopupMenu.add(listPopupMenuSearch);
         listPopupMenu.add(listPopupMenuSortAsc);
         listPopupMenu.add(listPopupMenuSortDesc);
 
@@ -263,6 +266,10 @@ public class View {
 
     public JMenuItem getListPopupMenuAdd() {
         return this.listPopupMenuAdd;
+    }
+
+    public JMenuItem getListPopupMenuSearch() {
+        return this.listPopupMenuSearch;
     }
 
     public JPanel getAddDialog() {
