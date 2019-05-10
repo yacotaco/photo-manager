@@ -244,7 +244,7 @@ public class Controller {
       public class SearchActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
-          JOptionPane.showConfirmDialog(null, view.getSearchDialog(), "Search", JOptionPane.OK_CANCEL_OPTION);
+          JOptionPane.showConfirmDialog(null, view.getSearchDialog(), "Search", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         }
       }
 
