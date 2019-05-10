@@ -37,6 +37,9 @@ public class Controller {
         view.getList().addMouseListener(new ListListener());
         view.getListPopupMenuAdd().addActionListener(new AddActionListener());
         view.getListPopupMenuDelete().addActionListener(new DeleteActionListener());
+        view.getSubMenuSortAscAuthor().addActionListener(new SortAscAuthorListener());
+        view.getSubMenuSortAscDate().addActionListener(new SortAscDateListener());
+        view.getSubMenuSortAscLocation().addActionListener(new SortAscLocationListener());
     }
 
     
@@ -232,5 +235,27 @@ public class Controller {
           }
         }
       }
+
+      public class SortAscAuthorListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          System.out.println("empty author listener");
+        }
+      }
+
+      public class SortAscDateListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          System.out.println("empty date listener");
+        }
+      }
+
+      public class SortAscLocationListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          System.out.println("empty location listener");
+        }
+      }
+
 }
 
