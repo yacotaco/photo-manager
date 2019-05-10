@@ -312,5 +312,17 @@ public class View {
     public JMenuItem getListPopupMenuDelete() {
         return this.listPopupMenuDelete;
     }
+
+    public JMenuItem getSubMenuSortAscAuthor() {
+        return this.subMenuSortAscAuthor;
+    }
+
+    public JMenuItem getSubMenuSortAscDate() {
+        return this.subMenuSortAscDate;
+    }
+
+    public JMenuItem getSubMenuSortAscLocation() {
+        return this.subMenuSortAscLocation;
+    }
 }
 
