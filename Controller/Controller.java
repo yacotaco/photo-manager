@@ -179,10 +179,18 @@ public class Controller {
         
         public AddActionListener(){};
 
+        public void setEmptyTextFileds() {
+          view.setAddPathDialog("");
+          view.setAddAuthorDialog("");
+          view.setAddLocationDialog("");
+          view.setAddDateDialog("");
+          view.setAddTagsDialog("");
+        }
+        
         @Override
         public void actionPerformed(ActionEvent event) {
+          setEmptyTextFileds();
           int result = JOptionPane.showConfirmDialog(null, view.getAddDialog(), "Add", JOptionPane.OK_CANCEL_OPTION);
-          
           // fix adding tags 
           // add fields validation
           if(result == JOptionPane.OK_OPTION) {
