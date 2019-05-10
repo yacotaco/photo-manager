@@ -164,12 +164,16 @@ public class View {
         addDialog.setLayout(new BoxLayout(addDialog, BoxLayout.Y_AXIS));
         addDialog.add(new JLabel("Path:"));
         addDialog.add(addPathDialog);
+        addDialog.add(Box.createVerticalStrut(5));
         addDialog.add(new JLabel("Author:"));
         addDialog.add(addAuthorDialog);
+        addDialog.add(Box.createVerticalStrut(5));
         addDialog.add(new JLabel("Location:"));
         addDialog.add(addLocationDialog);
+        addDialog.add(Box.createVerticalStrut(5));
         addDialog.add(new JLabel("Date:"));
         addDialog.add(addDateDialog);
+        addDialog.add(Box.createVerticalStrut(5));
         addDialog.add(new JLabel("Tags:"));
         addDialog.add(addTagsDialog);
 
