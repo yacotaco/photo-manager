@@ -38,6 +38,7 @@ public class Controller {
         view.getList().addMouseListener(new ListListener());
         view.getListPopupMenuAdd().addActionListener(new AddActionListener());
         view.getListPopupMenuDelete().addActionListener(new DeleteActionListener());
+        view.getListPopupMenuSearch().addActionListener(new SearchActionListener());
         view.getSubMenuSortAscAuthor().addActionListener(new SortAscAuthorListener());
         view.getSubMenuSortAscDate().addActionListener(new SortAscDateListener());
         view.getSubMenuSortAscLocation().addActionListener(new SortAscLocationListener());
@@ -237,6 +238,13 @@ public class Controller {
           } else {
             JOptionPane.showMessageDialog(null, "List is empty!");
           }
+        }
+      }
+
+      public class SearchActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          JOptionPane.showConfirmDialog(null, view.getSearchDialog(), "Search", JOptionPane.OK_CANCEL_OPTION);
         }
       }
 
