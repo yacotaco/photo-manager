@@ -289,7 +289,14 @@ public class Controller {
 
             return imageList;     
         
-          }       
+          }
+          
+          public ArrayList<Image> getSortedAscByDate() {
+            Collections.sort(imageList, Image.dateComparator);         
+
+            return imageList;     
+        
+          }
           
       }
 }
