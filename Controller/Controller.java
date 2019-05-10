@@ -162,7 +162,7 @@ public class Controller {
               view.setTagsDialog(imageList.get(index).getTag());
         
               int result = JOptionPane.showConfirmDialog(null, view.getEditDialog(),
-              "Edit", JOptionPane.OK_CANCEL_OPTION);
+              "Edit", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
             
               if(result == JOptionPane.OK_OPTION) {
                 // update list view
