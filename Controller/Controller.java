@@ -192,8 +192,12 @@ public class Controller {
             String location = view.getAddLocationDialog();
             String date = view.getAddDateDialog();
             String tags = view.getAddTagsDialog();
-            imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
-            view.setListLabels(imageName);
+            if(view.getListModel().contains(imageName) == false) {
+              imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
+              view.setListLabels(imageName);
+            } else {
+              JOptionPane.showMessageDialog(null, "Image is on list!");
+            }
           }
         }
       }
