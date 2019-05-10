@@ -198,7 +198,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           setEmptyTextFileds();
-          int result = JOptionPane.showConfirmDialog(null, view.getAddDialog(), "Add", JOptionPane.OK_CANCEL_OPTION);
+          int result = JOptionPane.showConfirmDialog(null, view.getAddDialog(), "Add", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
           // fix adding tags 
           // add fields validation
           try {
