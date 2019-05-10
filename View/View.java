@@ -144,12 +144,16 @@ public class View {
         editDialog.setLayout(new BoxLayout(editDialog, BoxLayout.Y_AXIS));
         editDialog.add(new JLabel("Path:"));
         editDialog.add(pathDialog);
+        editDialog.add(Box.createVerticalStrut(5));
         editDialog.add(new JLabel("Author:"));
         editDialog.add(authorDialog);
+        editDialog.add(Box.createVerticalStrut(5));
         editDialog.add(new JLabel("Location:"));
         editDialog.add(locationDialog);
+        editDialog.add(Box.createVerticalStrut(5));
         editDialog.add(new JLabel("Date:"));
         editDialog.add(dateDialog);
+        editDialog.add(Box.createVerticalStrut(5));
         editDialog.add(new JLabel("Tags:"));
         editDialog.add(tagsDialog);
 
