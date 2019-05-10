@@ -180,9 +180,10 @@ public class View {
 
         searchDialog = new JPanel();
         searchDialog.setLayout(new BoxLayout(searchDialog, BoxLayout.Y_AXIS));
-        searchDialog.add(Box.createRigidArea(new Dimension(0, 5)));
         searchDialog.add(searchComboListValueType);
+        searchDialog.add(Box.createVerticalStrut(10));
         searchDialog.add(searchComboListCompareCondition);
+        searchDialog.add(Box.createVerticalStrut(10));
         searchDialog.add(searchValueDialog);
 
          // scrole pane
