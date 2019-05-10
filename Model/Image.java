@@ -116,4 +116,16 @@ public class Image implements Comparator<Image> {
         }     
     
     };      
+
+    public static Comparator<Image> locationComparator = new Comparator<Image>() {         
+
+        @Override         
+    
+        public int compare(Image image1, Image image2) {             
+    
+          return (int) (image1.getLocation().compareTo(image2.getLocation()));         
+    
+        }     
+    
+    };
 }
