@@ -320,6 +320,14 @@ public class Controller {
             return imageList;     
         
           }
+
+          public ArrayList<Image> getSortedDescByLocation() {
+            Collections.sort(imageList, Image.locationComparator);         
+            Collections.reverse(imageList);
+
+            return imageList;     
+        
+          }
           
       }
 }
