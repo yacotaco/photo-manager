@@ -308,6 +308,18 @@ public class View {
         return this.addDialog;
     }
 
+    public JComboBox getSearchComboListValueType() {
+        return this.searchComboListValueType;
+    }
+
+    public JComboBox getSearchComboListCompareCondition() {
+        return this.searchComboListCompareCondition;
+    } 
+
+    public String getSearchValueDialog() {
+        return this.searchValueDialog.getText();
+    }
+
     public JPanel getSearchDialog() {
         return this.searchDialog;
     }
