@@ -40,6 +40,9 @@ public class Controller {
         view.getSubMenuSortAscAuthor().addActionListener(new SortAscAuthorListener());
         view.getSubMenuSortAscDate().addActionListener(new SortAscDateListener());
         view.getSubMenuSortAscLocation().addActionListener(new SortAscLocationListener());
+        view.getSubMenuSortDescAuthor().addActionListener(new SortDescAuthorListener());
+        view.getSubMenuSortDescDate().addActionListener(new SortDescDateListener());
+        view.getSubMenuSortDescLocation().addActionListener(new SortDescLocationListener());
     }
 
     
@@ -257,5 +260,25 @@ public class Controller {
         }
       }
 
+      public class SortDescAuthorListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          System.out.println("empty author listener");
+        }
+      }
+
+      public class SortDescDateListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          System.out.println("empty date listener");
+        }
+      }
+
+      public class SortDescLocationListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          System.out.println("empty location listener");
+        }
+      }
 }
 
