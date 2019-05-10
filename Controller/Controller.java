@@ -297,6 +297,13 @@ public class Controller {
             return imageList;     
         
           }
+
+          public ArrayList<Image> getSortedAscByLocation() {
+            Collections.sort(imageList, Image.locationComparator);         
+
+            return imageList;     
+        
+          }      
           
       }
 }
