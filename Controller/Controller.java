@@ -240,10 +240,19 @@ public class Controller {
         }
       }
 
-      public class SortAscAuthorListener implements ActionListener {
+      public void updateListLabels() {
+        view.getListModel().removeAllElements();
+        for (Image item : imageList) {
+          view.getListModel().addElement(item.getImageName());
+        }
+      }
+
+
+       public class SortAscAuthorListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedAscByAuthor();
+          updateListLabels();
         }
       }
 
@@ -251,6 +260,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedAscByDate();
+          updateListLabels();
         }
       }
 
@@ -258,6 +268,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedAscByLocation();
+          updateListLabels();
         }
       }
 
@@ -265,6 +276,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedDescByAuthor();
+          updateListLabels();
         }
       }
 
@@ -272,6 +284,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedDescByDate();
+          updateListLabels();
         }
       }
 
@@ -279,6 +292,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedDescByLocation();
+          updateListLabels();
         }
       }
 
