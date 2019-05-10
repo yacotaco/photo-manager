@@ -269,6 +269,26 @@ public class View {
         return this.addDialog;
     }
 
+    public void setAddPathDialog(String imagePath) {
+        this.addPathDialog.setText(imagePath);
+    }
+
+    public void setAddAuthorDialog(String imageAuthor) {
+        this.addAuthorDialog.setText(imageAuthor);
+    }
+
+    public void setAddLocationDialog(String location) {
+        this.addLocationDialog.setText(location);
+    }
+
+    public void setAddDateDialog(String date) {
+        this.addDateDialog.setText(date);
+    }
+
+    public void setAddTagsDialog(String tags) {
+        this.addTagsDialog.setText(tags);
+    }
+
     public String getAddPathDialog() {
         return this.addPathDialog.getText();
     }
