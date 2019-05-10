@@ -324,5 +324,17 @@ public class View {
     public JMenuItem getSubMenuSortAscLocation() {
         return this.subMenuSortAscLocation;
     }
+
+    public JMenuItem getSubMenuSortDescAuthor() {
+        return this.subMenuSortDescAuthor;
+    }
+
+    public JMenuItem getSubMenuSortDescDate() {
+        return this.subMenuSortDescDate;
+    }
+
+    public JMenuItem getSubMenuSortDescLocation() {
+        return this.subMenuSortDescLocation;
+    }
 }
 
