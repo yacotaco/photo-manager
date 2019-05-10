@@ -312,6 +312,14 @@ public class Controller {
             return imageList;     
         
           }
+
+          public ArrayList<Image> getSortedDescByDate() {
+            Collections.sort(imageList, Image.dateComparator);         
+            Collections.reverse(imageList);
+
+            return imageList;     
+        
+          }
           
       }
 }
