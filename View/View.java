@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPopupMenu;
+import javax.swing.JComboBox;
 
 /**
  * View
@@ -57,12 +58,18 @@ public class View {
     private JMenuItem subMenuSortDescLocation;
     private JMenuItem subMenuSortDescDate;
     private JPanel addDialog;
+    private JPanel searchDialog;
+    private JComboBox searchComboListValueType;
+    private JComboBox searchComboListCompareCondition;
+    private String[] selectSearchTypeValue = {"Author", "Location", "Date"};
+    private String[] selectSearchConditionValue = {"equal to", "greater than", "less than" };
+    private JTextField searchValueDialog;
     private JTextField addPathDialog;
     private JTextField addAuthorDialog;
     private JTextField addLocationDialog;
     private JTextField addDateDialog;
     private JTextField addTagsDialog;
-       
+    
     /** 
     @param frame holds all componanets of UI.
     */
@@ -165,6 +172,18 @@ public class View {
         addDialog.add(addDateDialog);
         addDialog.add(new JLabel("Tags:"));
         addDialog.add(addTagsDialog);
+
+        // search
+        searchComboListValueType = new JComboBox(selectSearchTypeValue);
+        searchComboListCompareCondition = new JComboBox(selectSearchConditionValue);
+        searchValueDialog = new JTextField(15);
+
+        searchDialog = new JPanel();
+        searchDialog.setLayout(new BoxLayout(searchDialog, BoxLayout.Y_AXIS));
+        searchDialog.add(Box.createRigidArea(new Dimension(0, 5)));
+        searchDialog.add(searchComboListValueType);
+        searchDialog.add(searchComboListCompareCondition);
+        searchDialog.add(searchValueDialog);
 
          // scrole pane
         listScrollPane = new JScrollPane(pane);
@@ -278,6 +297,10 @@ public class View {
 
     public JPanel getAddDialog() {
         return this.addDialog;
+    }
+
+    public JPanel getSearchDialog() {
+        return this.searchDialog;
     }
 
     public void setAddPathDialog(String imagePath) {
