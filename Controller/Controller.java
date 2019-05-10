@@ -303,7 +303,15 @@ public class Controller {
 
             return imageList;     
         
-          }      
+          }
+          
+          public ArrayList<Image> getSortedDescByAuthor() {
+            Collections.sort(imageList, Image.authorComparator);         
+            Collections.reverse(imageList);
+
+            return imageList;     
+        
+          }
           
       }
 }
