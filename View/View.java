@@ -268,6 +268,10 @@ public class View {
         return this.listPopupMenuAdd;
     }
 
+    public JMenuItem getListPopupMenuDelete() {
+        return this.listPopupMenuDelete;
+    }
+
     public JMenuItem getListPopupMenuSearch() {
         return this.listPopupMenuSearch;
     }
@@ -314,10 +318,6 @@ public class View {
 
     public String getAddTagsDialog() {
         return this.addTagsDialog.getText();
-    }
-
-    public JMenuItem getListPopupMenuDelete() {
-        return this.listPopupMenuDelete;
     }
 
     public JMenuItem getSubMenuSortAscAuthor() {
