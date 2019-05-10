@@ -82,7 +82,7 @@ public class Image implements Comparator<Image> {
     }
 
     public String toString() {
-        return this.path + " " + this.author + " " + this.location + " "
+        return this.imageName + " " + this.path + " " + this.author + " " + this.location + " "
         + this.date + " " + this.tagList;
     }
 
