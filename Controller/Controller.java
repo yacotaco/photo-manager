@@ -244,7 +244,13 @@ public class Controller {
       public class SearchActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
-          JOptionPane.showConfirmDialog(null, view.getSearchDialog(), "Search", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+          int result = JOptionPane.showConfirmDialog(null, view.getSearchDialog(), "Search", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+          if(result == JOptionPane.OK_OPTION) {
+            String valueType = view.getSearchComboListValueType().getSelectedItem().toString();
+            String valueCondition = view.getSearchComboListCompareCondition().getSelectedItem().toString();
+            String inputValue = view.getSearchValueDialog();
+            System.out.println(valueType + " " + valueCondition + " " + inputValue);
+          }
         }
       }
 
