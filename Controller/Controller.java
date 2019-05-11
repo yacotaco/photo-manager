@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
 import java.io.IOException;
@@ -197,6 +198,14 @@ public class Controller {
       
         @Override
         public void mouseClicked(MouseEvent event) {
+          if(SwingUtilities.isLeftMouseButton(event)) {
+            int index = view.getList().locationToIndex(event.getPoint());
+            if(index != -1) {
+              String path = imageList.get(index).getPath();
+              view.setImageLabel(new ImageIcon(path));
+            }
+          }
+
           if(SwingUtilities.isLeftMouseButton(event) && event.getClickCount() == 2) {
             int index = view.getList().locationToIndex(event.getPoint());
             if(index != -1) {
