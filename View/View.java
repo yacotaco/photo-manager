@@ -1,4 +1,5 @@
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JMenu;
@@ -69,6 +70,8 @@ public class View {
     private JTextField addLocationDialog;
     private JTextField addDateDialog;
     private JTextField addTagsDialog;
+    private JPanel imagePane;
+    private JLabel imageLabel;
     
     /** 
     @param frame holds all componanets of UI.
@@ -194,9 +197,14 @@ public class View {
         searchDialog.add(Box.createVerticalStrut(10));
         searchDialog.add(searchValueDialog);
 
+        // image 
+        imagePane = new JPanel(new BorderLayout());
+        imageLabel = new JLabel();
+        imagePane.add(imageLabel);
+        
          // scrole pane
         listScrollPane = new JScrollPane(pane);
-        pictureScrollPane = new JScrollPane();
+        pictureScrollPane = new JScrollPane(imagePane);
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                            listScrollPane, pictureScrollPane);
 
@@ -207,7 +215,7 @@ public class View {
         minimumSize = new Dimension(100, 50);
         listScrollPane.setMinimumSize(minimumSize);
         pictureScrollPane.setMinimumSize(minimumSize);
-        
+
         // split pane
         frame.add(splitPane); 
 
@@ -390,6 +398,10 @@ public class View {
 
     public JMenuItem getMenuSaveItem() {
         return this.menuSaveItem;
+    }
+
+    public void setImageLabel(ImageIcon icon) {
+        this.imageLabel.setIcon(icon);
     }
 }
 
