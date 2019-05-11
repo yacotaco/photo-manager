@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 /**
  * Image model.  
@@ -88,19 +90,8 @@ public class Image implements Comparator<Image> {
     }
 
     public String parseTagList(List<String> tagList){
-
-        String temp = "";
-        String result;
-
-        for (String tag : tagList) {
-           temp = tag + "," + temp; 
-        }
-        if(temp.length() >0) {
-            result = temp.substring(0, temp.length()-1);
-            return result;
-        } else {
-            return "";
-        }
+        Stream<String> stream = tagList.stream();
+        return stream.collect(Collectors.joining(", "));     
     }
 
     private void validate() {
