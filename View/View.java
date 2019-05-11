@@ -61,7 +61,7 @@ public class View {
     private JPanel searchDialog;
     private JComboBox searchComboListValueType;
     private JComboBox searchComboListCompareCondition;
-    private String[] selectSearchTypeValue = {"Author", "Location", "Date"};
+    private String[] selectSearchTypeValue = {"Path", "Author", "Location", "Date", "Tag"};
     private String[] selectSearchConditionValue = {"equal to", "greater than", "less than" };
     private JTextField searchValueDialog;
     private JTextField addPathDialog;
