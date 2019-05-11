@@ -8,7 +8,9 @@ import java.awt.event.MouseListener;
 import javax.swing.JFileChooser;
 
 import java.io.IOException;
+import java.io.File;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import java.util.Collections;
+import java.io.FileWriter;
 
 /**
  * Read
@@ -65,7 +68,19 @@ public class Controller {
         userSelection = fc.showSaveDialog(view.getFrame());
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             path = fc.getSelectedFile().getPath();
-            System.out.println(path);
+            System.out.println(Paths.get(path));
+            try {
+              FileWriter fw = new FileWriter(path);
+          
+              for(Image item : imageList) {
+                fw.write(item.toString());
+                fw.write("\n");
+                System.out.println(item.toString());
+              }
+              fw.close();
+            } catch (IOException e) {
+              e.printStackTrace();
+            }         
         }
       }
     }
