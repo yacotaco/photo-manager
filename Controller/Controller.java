@@ -61,7 +61,7 @@ public class Controller {
         fc = new JFileChooser();
         fc.setDialogTitle("Specify a file to save");   
          
-        
+
         userSelection = fc.showSaveDialog(view.getFrame());
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             path = fc.getSelectedFile().getPath();
@@ -243,8 +243,10 @@ public class Controller {
               String location = view.getAddLocationDialog();
               String date = view.getAddDateDialog();
               String tags = view.getAddTagsDialog();
+              List<String> tagsList = getImageTagsList(tags);
+
               if(view.getListModel().contains(imageName) == false) {
-                imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
+                imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tagsList));
                 view.setListLabels(imageName);
               } else {
                 JOptionPane.showMessageDialog(null, "Image is on list!");
