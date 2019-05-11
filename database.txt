@@ -1,8 +1,5 @@
-/home/k/Images/image1.jpg kk Warsaw 22.10.2029 Summer, Vacation
-/home/k/Images/image2.jpg Berlin 24.10.2059 Summer, Vacation
-/home/k/Images/image3.jpg kk 24.10.2059 Summer, Vacation
-/home/k/Images/image4.jpg kk Berlin Summer, Vacation, Hackathon
-/home/k/Images/image5.jpg kk Berlin 24.10.2059 
-/home/k/Images/image6.jpg kk Berlin 24/10/2059 Summer, Vacation
-/home/k/Images/image7.jpg
-
+/home/k/dev/photo-manager/Images/image1.jpg;John; London; 22.02.1969;mix,recording
+/home/k/dev/photo-manager/Images/image2.jpg; Paul; Strawberry; 23.02.1969;mix,jam
+/home/k/dev/photo-manager/Images/image3.jpg; Ringo; Fields; 24.02.1969;mastering
+/home/k/dev/photo-manager/Images/image4.jpg; George; Forever; 25.02.1969;jam,mix
+/home/k/dev/photo-manager/Images/image5.jpg;;;;
