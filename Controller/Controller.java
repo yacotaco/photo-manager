@@ -87,6 +87,7 @@ public class Controller {
       String location;
       String date;
       String tags;
+      List<String> tagsList;
 
       try (Stream<String> stream = Files.lines(Paths.get(path))) {
         List<String> list = stream.collect(Collectors.toList()); 
@@ -101,12 +102,16 @@ public class Controller {
               location = itemSplit[2];
               date = itemSplit[3];
               tags = itemSplit[4];
-              imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tags));
+              tags = itemSplit[4].replaceAll("\\s+","");
+              tagsList = getImageTagsList(tags);
+              imageList.add(new Image(imageName, imagePath, imageAuthor, location, date, tagsList));
               view.setListLabels(imageName);
             } else if(itemSplit.length == 1) {
               imagePath = itemSplit[0];
               imageName = getImageNameFromPath(imagePath);
-              imageList.add(new Image(imageName, imagePath, "", "", "", ""));
+              String[] emptyList = {};
+              tagsList = Arrays.asList(emptyList);
+              imageList.add(new Image(imageName, imagePath, "", "", "", tagsList));
               view.setListLabels(imageName);
             }
           
@@ -124,6 +129,11 @@ public class Controller {
       String temp[] = imagePath.split("/");
       String imageName = temp[temp.length-1];
       return imageName;
+    }
+
+    public List<String> getImageTagsList(String tags){
+      String[] tagsList = tags.split(",");
+      return Arrays.asList(tagsList);
     }
 
     public class ListListener implements MouseListener {
@@ -159,7 +169,7 @@ public class Controller {
               view.setAuthorDialog(imageList.get(index).getAuthor());
               view.setLocationDialog(imageList.get(index).getLocation());
               view.setDateDialog(imageList.get(index).getDate());
-              view.setTagsDialog(imageList.get(index).getTag());
+              view.setTagsDialog(imageList.get(index).getTag().toString().replaceAll("[^A-Za-z,\\s]", ""));
         
               int result = JOptionPane.showConfirmDialog(null, view.getEditDialog(),
               "Edit", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -174,7 +184,9 @@ public class Controller {
                 imageList.get(index).setAuthor(view.getAuthorDialog());
                 imageList.get(index).setLocation(view.getLocationDialog());
                 imageList.get(index).setDate(view.getDateDialog());
-                imageList.get(index).setTag(view.getTagsDialog());
+                String[] tags = view.getTagsDialog().replaceAll("\\s", "").split(",");
+                List<String> listTags = Arrays.asList(tags);
+                imageList.get(index).setTag(listTags);
               }
 
             }
