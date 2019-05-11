@@ -68,14 +68,12 @@ public class Controller {
         userSelection = fc.showSaveDialog(view.getFrame());
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             path = fc.getSelectedFile().getPath();
-            System.out.println(Paths.get(path));
             try {
               FileWriter fw = new FileWriter(path);
           
               for(Image item : imageList) {
                 fw.write(item.toString());
                 fw.write("\n");
-                System.out.println(item.toString());
               }
               fw.close();
             } catch (IOException e) {
