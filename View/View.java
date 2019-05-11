@@ -387,5 +387,9 @@ public class View {
     public JMenuItem getSubMenuSortDescLocation() {
         return this.subMenuSortDescLocation;
     }
+
+    public JMenuItem getMenuSaveItem() {
+        return this.menuSaveItem;
+    }
 }
 
