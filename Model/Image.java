@@ -23,13 +23,13 @@ public class Image implements Comparator<Image> {
     @param tag for image(as list ex. family, vacation, landscape) 
     */
     
-    public Image(String imageName, String path, String author, String location, String date, String tag) {
+    public Image(String imageName, String path, String author, String location, String date, List<String> tagList) {
         this.imageName = imageName;
         this.path = path;
         this.author = author;
         this.location = location;
         this.date = date;
-        this.tagList.add(tag);
+        this.tagList = tagList;
         validate();
     }
 
@@ -73,12 +73,12 @@ public class Image implements Comparator<Image> {
         this.date = date;
     }
 
-    public String getTag() {
-        return this.tagList.toString();
+    public List<String> getTag() {
+        return this.tagList;
     }
 
-    public void setTag(String tag) {
-        this.tagList.add(tag);
+    public void setTag(List<String> tagList) {
+        this.tagList = tagList;
     }
 
     public String toString() {
