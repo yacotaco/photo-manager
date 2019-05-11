@@ -291,6 +291,8 @@ public class Controller {
           if(index > -1) {
             imageList.remove(index);
             view.getListModel().remove(index);
+            String path = "";
+            view.setImageLabel(new ImageIcon(path));
           } else if (index == -1 && imageList.size() > 0) {
             JOptionPane.showMessageDialog(null, "Select image!");
           } else {
