@@ -35,6 +35,7 @@ public class Controller {
     public void initControler(){
         view.getMenuExitItem().addActionListener(new ExitActionListener());
         view.getMenuOpenItem().addActionListener(new OpenActionListener());
+        view.getMenuSaveItem().addActionListener(new SaveActionListener());
         view.getList().addMouseListener(new ListListener());
         view.getListPopupMenuAdd().addActionListener(new AddActionListener());
         view.getListPopupMenuDelete().addActionListener(new DeleteActionListener());
@@ -47,6 +48,27 @@ public class Controller {
         view.getSubMenuSortDescLocation().addActionListener(new SortDescLocationListener());
     }
 
+    public class SaveActionListener implements ActionListener {
+
+      JFileChooser fc;
+      int userSelection; 
+      String path;
+
+      public SaveActionAction(){};
+
+      @Override
+      public void actionPerformed(ActionEvent event) {
+        fc = new JFileChooser();
+        fc.setDialogTitle("Specify a file to save");   
+         
+        
+        userSelection = fc.showSaveDialog(view.getFrame());
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            path = fc.getSelectedFile().getPath();
+            System.out.println(path);
+        }
+      }
+    }
     
     public class ExitActionListener implements ActionListener {
       
