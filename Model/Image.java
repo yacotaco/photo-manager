@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Image model.  
@@ -83,7 +84,23 @@ public class Image implements Comparator<Image> {
 
     public String toString() {
         return this.imageName + ";" + this.path + ";" + this.author + ";" + this.location + ";"
-        + this.date + ";" + this.tagList;
+        + this.date + ";" + parseTagList(this.tagList);
+    }
+
+    public String parseTagList(List<String> tagList){
+
+        String temp = "";
+        String result;
+
+        for (String tag : tagList) {
+           temp = tag + "," + temp; 
+        }
+        if(temp.length() >0) {
+            result = temp.substring(0, temp.length()-1);
+            return result;
+        } else {
+            return "";
+        }
     }
 
     private void validate() {
