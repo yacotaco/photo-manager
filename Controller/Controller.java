@@ -367,6 +367,10 @@ public class Controller {
                  break;
                 case "less than":
                 break;
+                case "min value":
+                  String label = new ImageSorter().getMinDate().getImageName();
+                  updateListLabelsFromSearch(label);
+                  break;
               }
                 break;
               
@@ -385,6 +389,10 @@ public class Controller {
                  break;
                 case "less than":
                 break;
+                case "min value":
+                  String label = new ImageSorter().getMinLocation().getImageName();
+                  updateListLabelsFromSearch(label);
+                  break;
               }
                 break;
 
@@ -524,14 +532,14 @@ public class Controller {
         
           }
 
-          public ArrayList<Image> getMinLocation() {
+          public Image getMinLocation() {
             Collections.sort(imageList, Image.authorComparator);         
 
             return imageList.get(0);     
         
           }
 
-          public ArrayList<Image> getMinDate() {
+          public Image getMinDate() {
             Collections.sort(imageList, Image.authorComparator);         
 
             return imageList.get(0);     
