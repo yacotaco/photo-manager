@@ -350,6 +350,9 @@ public class Controller {
                   String label = new ImageSorter().getMinAuthor().getImageName();
                   updateListLabelsFromSearch(label);
                   break;
+                case "max value":
+                  String maxLabel = new ImageSorter().getMaxAuthor().getImageName();
+                  updateListLabelsFromSearch(maxLabel);
               }
                 break;
 
@@ -371,6 +374,9 @@ public class Controller {
                   String label = new ImageSorter().getMinDate().getImageName();
                   updateListLabelsFromSearch(label);
                   break;
+                case "max value":
+                  String maxLabel = new ImageSorter().getMaxDate().getImageName();
+                  updateListLabelsFromSearch(maxLabel);
               }
                 break;
               
@@ -393,6 +399,9 @@ public class Controller {
                   String label = new ImageSorter().getMinLocation().getImageName();
                   updateListLabelsFromSearch(label);
                   break;
+                case "max value":
+                  String maxLabel = new ImageSorter().getMaxLocation().getImageName();
+                  updateListLabelsFromSearch(maxLabel);
               }
                 break;
 
@@ -541,6 +550,30 @@ public class Controller {
 
           public Image getMinDate() {
             Collections.sort(imageList, Image.authorComparator);         
+
+            return imageList.get(0);     
+        
+          }
+
+          public Image getMaxAuthor() {
+            Collections.sort(imageList, Image.authorComparator);         
+            Collections.reverse(imageList);
+
+            return imageList.get(0);     
+        
+          }
+
+          public Image getMaxDate() {
+            Collections.sort(imageList, Image.dateComparator);         
+            Collections.reverse(imageList);
+
+            return imageList.get(0);     
+        
+          }
+
+          public Image getMaxLocation() {
+            Collections.sort(imageList, Image.locationComparator);         
+            Collections.reverse(imageList);
 
             return imageList.get(0);     
         
