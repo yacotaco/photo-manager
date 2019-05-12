@@ -320,137 +320,145 @@ public class Controller {
       public class SearchActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
-          int result = JOptionPane.showConfirmDialog(null, view.getSearchDialog(), "Search", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-          if(result == JOptionPane.OK_OPTION) {
-            String valueType = view.getSearchComboListValueType().getSelectedItem().toString();
-            String valueCondition = view.getSearchComboListCompareCondition().getSelectedItem().toString();
-            String inputValue = view.getSearchValueDialog();
-            System.out.println(valueType + " " + valueCondition + " " + inputValue);
-            Stream<Image> subImageStream = imageList.stream();
-            List<Image> subImageList;
+          if(imageList.size() == 0) {
+            JOptionPane.showMessageDialog(null, "List is empty!");
+          } else {
+              int result = JOptionPane.showConfirmDialog(null, view.getSearchDialog(), "Search", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+              if(result == JOptionPane.OK_OPTION) {
+                String valueType = view.getSearchComboListValueType().getSelectedItem().toString();
+                String valueCondition = view.getSearchComboListCompareCondition().getSelectedItem().toString();
+                String inputValue = view.getSearchValueDialog();
 
-            switch (valueType) {
-              case "Tag":
+                if(inputValue.length() == 0) {
+                  JOptionPane.showMessageDialog(null, "Enter search value!");
+                }
 
-                switch (valueCondition) {
-                  case "equal to":
+                Stream<Image> subImageStream = imageList.stream();
+                List<Image> subImageList;
+
+                switch (valueType) {
+                  case "Tag":
+
+                    switch (valueCondition) {
+                      case "equal to":
+                        subImageList = subImageStream
+                          .filter(image -> image.getTag()
+                          .contains(inputValue))
+                          .collect(Collectors.toList());
+                        updateListLabels(subImageList);
+                        break;
+                      case "greater than":
+                        JOptionPane.showMessageDialog(null, "Search equal to only!");
+                      break;
+                      case "less than":
+                        JOptionPane.showMessageDialog(null, "Search equal to only!");
+                      break;
+                      case "min value":
+                        JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                        break;
+                      case "max than":
+                        JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                      break;
+                    }
+                    break;
+
+                  case "Author":
+
+                  switch (valueCondition) {
+                    case "equal to":
+                      subImageList = subImageStream
+                        .filter(image -> image.getAuthor()
+                        .contains(inputValue))
+                        .collect(Collectors.toList());
+                      updateListLabels(subImageList);
+                      break;
+                    case "greater than":
+                      JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                    break;
+                    case "less than":
+                      JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                    break;
+                    case "min value":
+                      String label = new ImageSorter().getMinAuthor().getImageName();
+                      updateListLabelsFromSearch(label);
+                      break;
+                    case "max value":
+                      String maxLabel = new ImageSorter().getMaxAuthor().getImageName();
+                      updateListLabelsFromSearch(maxLabel);
+                  }
+                    break;
+
+                  case "Date":
+
+                  switch (valueCondition) {
+                    case "equal to":
                     subImageList = subImageStream
-                      .filter(image -> image.getTag()
+                      .filter(image -> image.getDate()
                       .contains(inputValue))
                       .collect(Collectors.toList());
-                    updateListLabels(subImageList);
+                      updateListLabels(subImageList);
+                      break;
+                    case "greater than": 
                     break;
-                  case "greater than":
-                    JOptionPane.showMessageDialog(null, "Search equal to only!");
-                   break;
-                  case "less than":
-                    JOptionPane.showMessageDialog(null, "Search equal to only!");
-                  break;
-                  case "min value":
-                    JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                    case "less than":
                     break;
-                  case "max than":
-                    JOptionPane.showMessageDialog(null, "Search option not applicable.");
-                  break;
+                    case "min value":
+                      String label = new ImageSorter().getMinDate().getImageName();
+                      updateListLabelsFromSearch(label);
+                      break;
+                    case "max value":
+                      String maxLabel = new ImageSorter().getMaxDate().getImageName();
+                      updateListLabelsFromSearch(maxLabel);
+                  }
+                    break;
+                  
+                  case "Location":
+
+                  switch (valueCondition) {
+                    case "equal to":
+                      subImageList = subImageStream
+                        .filter(image -> image.getLocation()
+                        .contains(inputValue))
+                        .collect(Collectors.toList());
+                        updateListLabels(subImageList);
+                      break;
+                    case "greater than":
+                      JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                      break;
+                    case "less than":
+                      JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                      break;
+                    case "min value":
+                      String label = new ImageSorter().getMinLocation().getImageName();
+                      updateListLabelsFromSearch(label);
+                      break;
+                    case "max value":
+                      String maxLabel = new ImageSorter().getMaxLocation().getImageName();
+                      updateListLabelsFromSearch(maxLabel);
+                  }
+                    break;
+
+                  case "Path":
+
+                  switch (valueCondition) {
+                    case "equal to":
+                      subImageList = subImageStream
+                        .filter(image -> image.getPath()
+                        .contains(inputValue))
+                        .collect(Collectors.toList());
+                        updateListLabels(subImageList);
+                      break;
+                    case "greater than":
+                      JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                      break;
+                    case "less than":
+                      JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                      break;
+                  }
+                    break;
                 }
-                break;
-
-              case "Author":
-
-              switch (valueCondition) {
-                case "equal to":
-                  subImageList = subImageStream
-                    .filter(image -> image.getAuthor()
-                    .contains(inputValue))
-                    .collect(Collectors.toList());
-                  updateListLabels(subImageList);
-                  break;
-                case "greater than":
-                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
-                 break;
-                case "less than":
-                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
-                break;
-                case "min value":
-                  String label = new ImageSorter().getMinAuthor().getImageName();
-                  updateListLabelsFromSearch(label);
-                  break;
-                case "max value":
-                  String maxLabel = new ImageSorter().getMaxAuthor().getImageName();
-                  updateListLabelsFromSearch(maxLabel);
-              }
-                break;
-
-              case "Date":
-
-              switch (valueCondition) {
-                case "equal to":
-                subImageList = subImageStream
-                  .filter(image -> image.getDate()
-                  .contains(inputValue))
-                  .collect(Collectors.toList());
-                  updateListLabels(subImageList);
-                  break;
-                case "greater than": 
-                 break;
-                case "less than":
-                break;
-                case "min value":
-                  String label = new ImageSorter().getMinDate().getImageName();
-                  updateListLabelsFromSearch(label);
-                  break;
-                case "max value":
-                  String maxLabel = new ImageSorter().getMaxDate().getImageName();
-                  updateListLabelsFromSearch(maxLabel);
-              }
-                break;
-              
-              case "Location":
-
-              switch (valueCondition) {
-                case "equal to":
-                  subImageList = subImageStream
-                    .filter(image -> image.getLocation()
-                    .contains(inputValue))
-                    .collect(Collectors.toList());
-                    updateListLabels(subImageList);
-                  break;
-                case "greater than":
-                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
-                  break;
-                case "less than":
-                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
-                  break;
-                case "min value":
-                  String label = new ImageSorter().getMinLocation().getImageName();
-                  updateListLabelsFromSearch(label);
-                  break;
-                case "max value":
-                  String maxLabel = new ImageSorter().getMaxLocation().getImageName();
-                  updateListLabelsFromSearch(maxLabel);
-              }
-                break;
-
-              case "Path":
-
-              switch (valueCondition) {
-                case "equal to":
-                  subImageList = subImageStream
-                    .filter(image -> image.getPath()
-                    .contains(inputValue))
-                    .collect(Collectors.toList());
-                    updateListLabels(subImageList);
-                  break;
-                case "greater than":
-                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
-                  break;
-                case "less than":
-                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
-                  break;
-              }
-                break;
-            }
-          }  
+              }  
+          }
         }
       }
 
