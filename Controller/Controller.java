@@ -178,8 +178,6 @@ public class Controller {
         }
       
       } catch (ArrayIndexOutOfBoundsException | IOException | IllegalArgumentException e) {
-        // check format of database 
-        e.printStackTrace();
         JOptionPane.showMessageDialog(view.getFrame(), e.getMessage());
       }
     }
@@ -278,8 +276,6 @@ public class Controller {
         public void actionPerformed(ActionEvent event) {
           setEmptyTextFileds();
           int result = JOptionPane.showConfirmDialog(null, view.getAddDialog(), "Add", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-          // fix adding tags 
-          // add fields validation
           try {
             if(result == JOptionPane.OK_OPTION) {
               String imagePath = view.getAddPathDialog();
