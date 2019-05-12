@@ -328,11 +328,6 @@ public class Controller {
                 String valueType = view.getSearchComboListValueType().getSelectedItem().toString();
                 String valueCondition = view.getSearchComboListCompareCondition().getSelectedItem().toString();
                 String inputValue = view.getSearchValueDialog();
-
-                if(inputValue.length() == 0) {
-                  JOptionPane.showMessageDialog(null, "Enter search value!");
-                }
-
                 Stream<Image> subImageStream = imageList.stream();
                 List<Image> subImageList;
 
