@@ -23,7 +23,7 @@ public class Image implements Comparator<Image> {
     @param author of image.
     @param location where image was taken.
     @param date when image was taken.
-    @param tag for image(as list ex. family, vacation, landscape) 
+    @param tagList stores image tags.
     */
     
     public Image(String imageName, String path, String author, String location, String date, List<String> tagList) {
