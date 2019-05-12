@@ -449,6 +449,12 @@ public class Controller {
                     case "less than":
                       JOptionPane.showMessageDialog(null, "Search option not applicable.");
                       break;
+                    case "min value":
+                      JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                      break;
+                    case "max than":
+                      JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                    break;
                   }
                     break;
                 }
