@@ -1,5 +1,6 @@
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JMenu;
@@ -72,6 +73,7 @@ public class View {
     private JTextField addTagsDialog;
     private JPanel imagePane;
     private JLabel imageLabel;
+    private JButton resetButton;
     
     /** 
     @param frame holds all componanets of UI.
@@ -128,13 +130,16 @@ public class View {
         listPopupMenu.add(listPopupMenuSearch);
         listPopupMenu.add(listPopupMenuSortAsc);
         listPopupMenu.add(listPopupMenuSortDesc);
-
+        
+        // search reset button 
+        resetButton = new JButton("Reset Search");
         // panel
         pane = new JPanel(new BorderLayout());
         // list and list model
         listModel = new DefaultListModel();
         list = new JList(listModel);
         pane.add(list, BorderLayout.CENTER);
+        pane.add(resetButton, BorderLayout.PAGE_END);
 
         // Edit dialog
         pathDialog = new JTextField(15);
@@ -404,6 +409,10 @@ public class View {
 
     public void setImageLabel(ImageIcon icon) {
         this.imageLabel.setIcon(icon);
+    }
+
+    public JButton getResetButton(){
+        return this.resetButton;
     }
 }
 
