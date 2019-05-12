@@ -24,6 +24,8 @@ import java.text.ParseException;
 
 import java.util.Collections;
 import java.io.FileWriter;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  * Controler
@@ -240,6 +242,7 @@ public class Controller {
               "Edit", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
             
               if(result == JOptionPane.OK_OPTION) {
+                try {
                 // update list view
                 String imageName = getImageNameFromPath(view.getPathDialog());
                 view.getListModel().set(index, imageName);
@@ -248,16 +251,33 @@ public class Controller {
                 imageList.get(index).setPath(view.getPathDialog());
                 imageList.get(index).setAuthor(view.getAuthorDialog());
                 imageList.get(index).setLocation(view.getLocationDialog());
+                validateDate(view.getDateDialog());
                 imageList.get(index).setDate(view.getDateDialog());
                 String[] tags = view.getTagsDialog().replaceAll("\\s", "").split(",");
                 List<String> listTags = Arrays.asList(tags);
                 imageList.get(index).setTag(listTags);
+                } catch (IllegalArgumentException e) {
+                  JOptionPane.showMessageDialog(null, e.getMessage());
+                }
               }
 
             }
             
           }
         }
+      }
+
+      public void validateDate(String date) {
+        String regex = "[0-3][0-9].[0-1][0-9].[0-9][0-9][0-9][0-9]";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(date);
+        boolean matcherResult = matcher.matches();
+
+        if(date != "") {
+            if(matcherResult == false) {
+                throw new IllegalArgumentException("Date in wrong format!");
+            }
+        }    
       }
 
       public class AddActionListener implements ActionListener {
