@@ -487,28 +487,28 @@ public class Controller {
 
       public class ImageSorter {
 
-          public ArrayList<Image> getSortedAscByAuthor() {
+          public List<Image> getSortedAscByAuthor() {
             Collections.sort(imageList, Image.authorComparator);         
 
             return imageList;     
         
           }
           
-          public ArrayList<Image> getSortedAscByDate() {
+          public List<Image> getSortedAscByDate() {
             Collections.sort(imageList, Image.dateComparator);         
 
             return imageList;     
         
           }
 
-          public ArrayList<Image> getSortedAscByLocation() {
+          public List<Image> getSortedAscByLocation() {
             Collections.sort(imageList, Image.locationComparator);         
 
             return imageList;     
         
           }
           
-          public ArrayList<Image> getSortedDescByAuthor() {
+          public List<Image> getSortedDescByAuthor() {
             Collections.sort(imageList, Image.authorComparator);         
             Collections.reverse(imageList);
 
@@ -516,7 +516,7 @@ public class Controller {
         
           }
 
-          public ArrayList<Image> getSortedDescByDate() {
+          public List<Image> getSortedDescByDate() {
             Collections.sort(imageList, Image.dateComparator);         
             Collections.reverse(imageList);
 
@@ -524,7 +524,7 @@ public class Controller {
         
           }
 
-          public ArrayList<Image> getSortedDescByLocation() {
+          public List<Image> getSortedDescByLocation() {
             Collections.sort(imageList, Image.locationComparator);         
             Collections.reverse(imageList);
 
