@@ -24,12 +24,17 @@ import java.util.Collections;
 import java.io.FileWriter;
 
 /**
- * Read
+ * Controler
  */
 public class Controller {
 
     private View view;
     private List<Image> imageList = new ArrayList<Image>();
+
+    /**
+    @param view View class object. 
+    @param imageList stors all elemetns form databas.
+    */
 
     Controller(View view) {
         this.view =  view;
