@@ -336,8 +336,16 @@ public class Controller {
                     updateListLabels(subImageList);
                     break;
                   case "greater than":
+                    JOptionPane.showMessageDialog(null, "Search equal to only!");
                    break;
                   case "less than":
+                    JOptionPane.showMessageDialog(null, "Search equal to only!");
+                  break;
+                  case "min value":
+                    JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                    break;
+                  case "max than":
+                    JOptionPane.showMessageDialog(null, "Search option not applicable.");
                   break;
                 }
                 break;
@@ -353,8 +361,10 @@ public class Controller {
                   updateListLabels(subImageList);
                   break;
                 case "greater than":
+                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
                  break;
                 case "less than":
+                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
                 break;
                 case "min value":
                   String label = new ImageSorter().getMinAuthor().getImageName();
@@ -401,10 +411,11 @@ public class Controller {
                     updateListLabels(subImageList);
                   break;
                 case "greater than":
-                
-                 break;
+                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                  break;
                 case "less than":
-                break;
+                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                  break;
                 case "min value":
                   String label = new ImageSorter().getMinLocation().getImageName();
                   updateListLabelsFromSearch(label);
@@ -426,9 +437,11 @@ public class Controller {
                     updateListLabels(subImageList);
                   break;
                 case "greater than":
-                 break;
+                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                  break;
                 case "less than":
-                break;
+                  JOptionPane.showMessageDialog(null, "Search option not applicable.");
+                  break;
               }
                 break;
             }
