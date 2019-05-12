@@ -98,7 +98,6 @@ public class Image implements Comparator<Image> {
     }
 
     private void validate() {
-        // check if path is not empty
         if(path.isEmpty()) {
             throw new IllegalArgumentException("Path cannot be empty!");
         }
@@ -107,14 +106,12 @@ public class Image implements Comparator<Image> {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(date);
         boolean matcherResult = matcher.matches();
-        
+
         if(date != "") {
             if(matcherResult == false) {
                 throw new IllegalArgumentException("Date in wrong format!");
             }
-        }
-        
-        
+        }    
     }
 
     public static Comparator<Image> authorComparator = new Comparator<Image>() {         
