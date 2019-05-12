@@ -81,13 +81,18 @@ public class Controller {
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             path = fc.getSelectedFile().getPath();
             try {
-              FileWriter fw = new FileWriter(path);
+              if(imageList.size() >0) {
+                FileWriter fw = new FileWriter(path);
           
               for(Image item : imageList) {
                 fw.write(item.toString());
                 fw.write("\n");
               }
               fw.close();
+              } else {
+                JOptionPane.showConfirmDialog(null, "List is empty! Do you want to save?");
+              }
+              
             } catch (IOException e) {
               e.printStackTrace();
             }         
