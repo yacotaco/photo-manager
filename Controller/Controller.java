@@ -29,7 +29,7 @@ import java.io.FileWriter;
 public class Controller {
 
     private View view;
-    private ArrayList<Image> imageList = new ArrayList<Image>();
+    private Arraylist<Image> imageList = new ArrayList<Image>();
 
     Controller(View view) {
         this.view =  view;
@@ -310,7 +310,98 @@ public class Controller {
             String valueCondition = view.getSearchComboListCompareCondition().getSelectedItem().toString();
             String inputValue = view.getSearchValueDialog();
             System.out.println(valueType + " " + valueCondition + " " + inputValue);
-          }
+            Stream<Image> subImageStream = imageList.stream();
+            List<Image> subImageList;
+
+            switch (valueType) {
+              case "Tag":
+
+                switch (valueCondition) {
+                  case "equal to":
+                    subImageList = subImageStream
+                      .filter(image -> image.getTag()
+                      .contains(inputValue))
+                      .collect(Collectors.toList());
+                    subImageList.forEach(System.out::println);
+                    
+                    break;
+                  case "greater than":
+                   break;
+                  case "less than":
+                  break;
+                }
+                break;
+
+              case "Author":
+
+              switch (valueCondition) {
+                case "equal to":
+                  subImageList = subImageStream
+                    .filter(image -> image.getAuthor()
+                    .contains(inputValue))
+                    .collect(Collectors.toList());
+                  subImageList.forEach(System.out::println);
+                  break;
+                case "greater than":
+                 break;
+                case "less than":
+                break;
+              }
+                break;
+
+              case "Date":
+
+              switch (valueCondition) {
+                case "equal to":
+                subImageList = subImageStream
+                  .filter(image -> image.getDate()
+                  .contains(inputValue))
+                  .collect(Collectors.toList());
+                  subImageList.forEach(System.out::println);
+                  break;
+                case "greater than": 
+                 break;
+                case "less than":
+                break;
+              }
+                break;
+              
+              case "Location":
+
+              switch (valueCondition) {
+                case "equal to":
+                  subImageList = subImageStream
+                    .filter(image -> image.getLocation()
+                    .contains(inputValue))
+                    .collect(Collectors.toList());
+                    subImageList.forEach(System.out::println);
+                  break;
+                case "greater than":
+                
+                 break;
+                case "less than":
+                break;
+              }
+                break;
+
+              case "Path":
+
+              switch (valueCondition) {
+                case "equal to":
+                  subImageList = subImageStream
+                    .filter(image -> image.getPath()
+                    .contains(inputValue))
+                    .collect(Collectors.toList());
+                  subImageList.forEach(System.out::println);
+                  break;
+                case "greater than":
+                 break;
+                case "less than":
+                break;
+              }
+                break;
+            }
+          }  
         }
       }
 
@@ -414,6 +505,27 @@ public class Controller {
             Collections.reverse(imageList);
 
             return imageList;     
+        
+          }
+
+          public ArrayList<Image> getMinAuthor() {
+            Collections.sort(imageList, Image.authorComparator);         
+
+            return imageList.get(0);     
+        
+          }
+
+          public ArrayList<Image> getMinLocation() {
+            Collections.sort(imageList, Image.authorComparator);         
+
+            return imageList.get(0);     
+        
+          }
+
+          public ArrayList<Image> getMinDate() {
+            Collections.sort(imageList, Image.authorComparator);         
+
+            return imageList.get(0);     
         
           }
           
