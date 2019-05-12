@@ -1,9 +1,12 @@
+import java.time.DateTimeException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  * Image model.  
@@ -99,6 +102,19 @@ public class Image implements Comparator<Image> {
         if(path.isEmpty()) {
             throw new IllegalArgumentException("Path cannot be empty!");
         }
+
+        String regex = "[0-3][0-9].[0-1][0-9].[0-9][0-9][0-9][0-9]";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(date);
+        boolean matcherResult = matcher.matches();
+        
+        if(date != "") {
+            if(matcherResult == false) {
+                throw new IllegalArgumentException("Date in wrong format!");
+            }
+        }
+        
+        
     }
 
     public static Comparator<Image> authorComparator = new Comparator<Image>() {         

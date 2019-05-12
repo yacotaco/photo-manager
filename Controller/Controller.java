@@ -20,6 +20,8 @@ import java.util.stream.Stream;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import java.text.ParseException;
+
 import java.util.Collections;
 import java.io.FileWriter;
 
@@ -157,7 +159,7 @@ public class Controller {
               imageName = getImageNameFromPath(imagePath);
               imageAuthor = itemSplit[1];
               location = itemSplit[2];
-              date = itemSplit[3];
+              date = itemSplit[3].replaceAll("\\s+","");
               tags = itemSplit[4];
               tags = itemSplit[4].replaceAll("\\s+","");
               tagsList = getImageTagsList(tags);
@@ -175,10 +177,10 @@ public class Controller {
           }
         }
       
-      } catch (ArrayIndexOutOfBoundsException | IOException e) {
+      } catch (ArrayIndexOutOfBoundsException | IOException | IllegalArgumentException e) {
         // check format of database 
         e.printStackTrace();
-        JOptionPane.showMessageDialog(view.getFrame(), "Cant read database!");
+        JOptionPane.showMessageDialog(view.getFrame(), e.getMessage());
       }
     }
 
@@ -296,9 +298,8 @@ public class Controller {
               }
             }
           } catch (IllegalArgumentException e) {
-              JOptionPane.showMessageDialog(null, "Path cannot be empty!");
-          }
-          
+              JOptionPane.showMessageDialog(null, e.getMessage());
+          } 
         }
       }
 
