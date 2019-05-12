@@ -322,8 +322,7 @@ public class Controller {
                       .filter(image -> image.getTag()
                       .contains(inputValue))
                       .collect(Collectors.toList());
-                    subImageList.forEach(System.out::println);
-                    
+                    updateListLabels(subImageList);
                     break;
                   case "greater than":
                    break;
@@ -340,7 +339,7 @@ public class Controller {
                     .filter(image -> image.getAuthor()
                     .contains(inputValue))
                     .collect(Collectors.toList());
-                  subImageList.forEach(System.out::println);
+                  updateListLabels(subImageList);
                   break;
                 case "greater than":
                  break;
@@ -364,7 +363,7 @@ public class Controller {
                   .filter(image -> image.getDate()
                   .contains(inputValue))
                   .collect(Collectors.toList());
-                  subImageList.forEach(System.out::println);
+                  updateListLabels(subImageList);
                   break;
                 case "greater than": 
                  break;
@@ -388,7 +387,7 @@ public class Controller {
                     .filter(image -> image.getLocation()
                     .contains(inputValue))
                     .collect(Collectors.toList());
-                    subImageList.forEach(System.out::println);
+                    updateListLabels(subImageList);
                   break;
                 case "greater than":
                 
@@ -413,7 +412,7 @@ public class Controller {
                     .filter(image -> image.getPath()
                     .contains(inputValue))
                     .collect(Collectors.toList());
-                  subImageList.forEach(System.out::println);
+                    updateListLabels(subImageList);
                   break;
                 case "greater than":
                  break;
@@ -426,7 +425,7 @@ public class Controller {
         }
       }
 
-      public void updateListLabels() {
+      public void updateListLabels(List<Image> imageList) {
         view.getListModel().removeAllElements();
         for (Image item : imageList) {
           view.getListModel().addElement(item.getImageName());
@@ -438,12 +437,11 @@ public class Controller {
         view.getListModel().addElement(label);
       }
 
-
        public class SortAscAuthorListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedAscByAuthor();
-          updateListLabels();
+          updateListLabels(imageList);
         }
       }
 
@@ -451,7 +449,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedAscByDate();
-          updateListLabels();
+          updateListLabels(imageList);
         }
       }
 
@@ -459,7 +457,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedAscByLocation();
-          updateListLabels();
+          updateListLabels(imageList);
         }
       }
 
@@ -467,7 +465,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedDescByAuthor();
-          updateListLabels();
+          updateListLabels(imageList);
         }
       }
 
@@ -475,7 +473,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedDescByDate();
-          updateListLabels();
+          updateListLabels(imageList);
         }
       }
 
@@ -483,7 +481,7 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent event) {
           new ImageSorter().getSortedDescByLocation();
-          updateListLabels();
+          updateListLabels(imageList);
         }
       }
 
