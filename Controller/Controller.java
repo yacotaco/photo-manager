@@ -29,7 +29,7 @@ import java.io.FileWriter;
 public class Controller {
 
     private View view;
-    private Arraylist<Image> imageList = new ArrayList<Image>();
+    private List<Image> imageList = new ArrayList<Image>();
 
     Controller(View view) {
         this.view =  view;
@@ -346,6 +346,10 @@ public class Controller {
                  break;
                 case "less than":
                 break;
+                case "min value":
+                  String label = new ImageSorter().getMinAuthor().getImageName();
+                  updateListLabelsFromSearch(label);
+                  break;
               }
                 break;
 
@@ -410,6 +414,11 @@ public class Controller {
         for (Image item : imageList) {
           view.getListModel().addElement(item.getImageName());
         }
+      }
+
+      public void updateListLabelsFromSearch(String label) {
+        view.getListModel().removeAllElements();
+        view.getListModel().addElement(label);
       }
 
 
@@ -508,7 +517,7 @@ public class Controller {
         
           }
 
-          public ArrayList<Image> getMinAuthor() {
+          public Image getMinAuthor() {
             Collections.sort(imageList, Image.authorComparator);         
 
             return imageList.get(0);     
