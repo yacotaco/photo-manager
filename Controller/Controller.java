@@ -50,6 +50,17 @@ public class Controller {
         view.getSubMenuSortDescAuthor().addActionListener(new SortDescAuthorListener());
         view.getSubMenuSortDescDate().addActionListener(new SortDescDateListener());
         view.getSubMenuSortDescLocation().addActionListener(new SortDescLocationListener());
+        view.getResetButton().addActionListener(new ResetButtonListener());
+    }
+
+    public class ResetButtonListener implements ActionListener{
+
+      public ResetButtonListener(){};
+
+      @Override
+      public void actionPerformed(ActionEvent event) {
+        updateListLabels(imageList);
+      }
     }
 
     public class SaveActionListener implements ActionListener {
