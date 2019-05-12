@@ -244,10 +244,10 @@ public class Controller {
               if(result == JOptionPane.OK_OPTION) {
                 try {
                 // update list view
+                validatePath(view.getPathDialog());
                 String imageName = getImageNameFromPath(view.getPathDialog());
                 view.getListModel().set(index, imageName);
                 getImageNameFromPath(view.getPathDialog());
-                
                 imageList.get(index).setPath(view.getPathDialog());
                 imageList.get(index).setAuthor(view.getAuthorDialog());
                 imageList.get(index).setLocation(view.getLocationDialog());
@@ -264,6 +264,12 @@ public class Controller {
             }
             
           }
+        }
+      }
+
+      public void validatePath(String path) {
+        if(path.isEmpty()) {
+          throw new IllegalArgumentException("Path cannot be empty!");
         }
       }
 
