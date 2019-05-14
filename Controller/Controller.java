@@ -240,7 +240,6 @@ public class Controller {
               Stream<Image> imageStream = imageList.stream();
               Image imageClicked = imageStream.filter(image -> image.getImageName() == valueToStr).findFirst().orElse(null); 
               int imageClickedIndex = imageList.indexOf(imageClicked);
-              System.out.println(imageClickedIndex);
               view.setPathDialog(imageList.get(imageClickedIndex).getPath());
               view.setAuthorDialog(imageList.get(imageClickedIndex).getAuthor());
               view.setLocationDialog(imageList.get(imageClickedIndex).getLocation());
@@ -253,8 +252,6 @@ public class Controller {
               if(result == JOptionPane.OK_OPTION) {
                 try {
                   validatePath(view.getPathDialog());
-                  String imageName = getImageNameFromPath(view.getPathDialog());
-                  System.out.println(imageClickedIndex + " " + imageName);
                   imageList.get(imageClickedIndex).setPath(view.getPathDialog());
                   imageList.get(imageClickedIndex).setAuthor(view.getAuthorDialog());
                   imageList.get(imageClickedIndex).setLocation(view.getLocationDialog());
