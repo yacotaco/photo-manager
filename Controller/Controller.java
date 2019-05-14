@@ -222,21 +222,30 @@ public class Controller {
         @Override
         public void mouseClicked(MouseEvent event) {
           if(SwingUtilities.isLeftMouseButton(event)) {
-            int index = view.getList().locationToIndex(event.getPoint());
-            if(index != -1) {
-              String path = imageList.get(index).getPath();
+            Object value = view.getList().getSelectedValue();
+            if(value != null) {
+              String valueToStr = value.toString();
+              Stream<Image> imageStream = imageList.stream();
+              Image imageClicked = imageStream.filter(image -> image.getImageName() == valueToStr).findFirst().orElse(null);
+              int imageClickedIndex = imageList.indexOf(imageClicked);
+              String path = imageList.get(imageClickedIndex).getPath();
               view.setImageLabel(new ImageIcon(path));
             }
           }
 
           if(SwingUtilities.isLeftMouseButton(event) && event.getClickCount() == 2) {
-            int index = view.getList().locationToIndex(event.getPoint());
-            if(index != -1) {
-              view.setPathDialog(imageList.get(index).getPath());
-              view.setAuthorDialog(imageList.get(index).getAuthor());
-              view.setLocationDialog(imageList.get(index).getLocation());
-              view.setDateDialog(imageList.get(index).getDate());
-              view.setTagsDialog(imageList.get(index).getTag().toString().replaceAll("[^A-Za-z,\\s]", ""));
+            Object value = view.getList().getSelectedValue();
+            if(value != null) {
+              String valueToStr = value.toString(); 
+              Stream<Image> imageStream = imageList.stream();
+              Image imageClicked = imageStream.filter(image -> image.getImageName() == valueToStr).findFirst().orElse(null); 
+              int imageClickedIndex = imageList.indexOf(imageClicked);
+              System.out.println(imageClickedIndex);
+              view.setPathDialog(imageList.get(imageClickedIndex).getPath());
+              view.setAuthorDialog(imageList.get(imageClickedIndex).getAuthor());
+              view.setLocationDialog(imageList.get(imageClickedIndex).getLocation());
+              view.setDateDialog(imageList.get(imageClickedIndex).getDate());
+              view.setTagsDialog(imageList.get(imageClickedIndex).getTag().toString().replaceAll("[^A-Za-z,\\s]", ""));
         
               int result = JOptionPane.showConfirmDialog(null, view.getEditDialog(),
               "Edit", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -246,16 +255,15 @@ public class Controller {
                 // update list view
                 validatePath(view.getPathDialog());
                 String imageName = getImageNameFromPath(view.getPathDialog());
-                view.getListModel().set(index, imageName);
-                getImageNameFromPath(view.getPathDialog());
-                imageList.get(index).setPath(view.getPathDialog());
-                imageList.get(index).setAuthor(view.getAuthorDialog());
-                imageList.get(index).setLocation(view.getLocationDialog());
+                System.out.println(imageClickedIndex + " " + imageName);
+                imageList.get(imageClickedIndex).setPath(view.getPathDialog());
+                imageList.get(imageClickedIndex).setAuthor(view.getAuthorDialog());
+                imageList.get(imageClickedIndex).setLocation(view.getLocationDialog());
                 validateDate(view.getDateDialog());
-                imageList.get(index).setDate(view.getDateDialog());
+                imageList.get(imageClickedIndex).setDate(view.getDateDialog());
                 String[] tags = view.getTagsDialog().replaceAll("\\s", "").split(",");
                 List<String> listTags = Arrays.asList(tags);
-                imageList.get(index).setTag(listTags);
+                imageList.get(imageClickedIndex).setTag(listTags);
                 } catch (IllegalArgumentException e) {
                   JOptionPane.showMessageDialog(null, e.getMessage());
                 }
