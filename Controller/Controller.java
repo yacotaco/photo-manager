@@ -421,7 +421,11 @@ public class Controller {
                       .collect(Collectors.toList());
                       updateListLabels(subImageList);
                       break;
-                    case "greater than": 
+                    case "greater than":
+                      subImageList = subImageStream
+                        .filter(image -> image.dateGreater(inputValue))
+                        .collect(Collectors.toList());
+                        updateListLabels(subImageList);
                     break;
                     case "less than":
                     break;

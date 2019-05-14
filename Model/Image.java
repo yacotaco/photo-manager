@@ -7,6 +7,9 @@ import java.util.stream.Stream;
 import java.util.stream.Collectors;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.text.ParseException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * Image model.  
@@ -95,6 +98,21 @@ public class Image implements Comparator<Image> {
     public String parseTagList(List<String> tagList){
         Stream<String> stream = tagList.stream();
         return stream.collect(Collectors.joining(", "));     
+    }
+
+    public boolean dateGreater(String inputValue) {
+        try {
+            if(this.date != "" && inputValue != "") {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+            Date date = sdf.parse(this.date); 
+            Date dateFromInput = sdf.parse(inputValue);
+            return date.after(dateFromInput);
+        } else {
+            return false;
+        }
+        } catch (ParseException e) {
+            return false;
+        } 
     }
 
     private void validate() {
