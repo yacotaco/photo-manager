@@ -127,7 +127,6 @@ public class View {
     public View() {
         // Add frame parameters
         frame = new JFrame("PhotoManager");
-        // frame.getContentPane().setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 420);
         frame.setLocationRelativeTo(null);
