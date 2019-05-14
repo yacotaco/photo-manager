@@ -21,14 +21,13 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import java.text.ParseException;
-
 import java.util.Collections;
 import java.io.FileWriter;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 /**
- * Controler
+ * Controller
  */
 public class Controller {
 
