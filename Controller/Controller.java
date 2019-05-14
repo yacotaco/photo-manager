@@ -251,11 +251,11 @@ public class Controller {
             
               if(result == JOptionPane.OK_OPTION) {
                 try {
-                  validatePath(view.getPathDialog());
+                  new Validator().validatePath(view.getPathDialog());
                   imageList.get(imageClickedIndex).setPath(view.getPathDialog());
                   imageList.get(imageClickedIndex).setAuthor(view.getAuthorDialog());
                   imageList.get(imageClickedIndex).setLocation(view.getLocationDialog());
-                  validateDate(view.getDateDialog());
+                  new Validator().validateDate(view.getDateDialog());
                   imageList.get(imageClickedIndex).setDate(view.getDateDialog());
                   String[] tags = view.getTagsDialog().replaceAll("\\s", "").split(",");
                   List<String> listTags = Arrays.asList(tags);
@@ -267,25 +267,6 @@ public class Controller {
             } 
           }
         }
-      }
-
-      public void validatePath(String path) {
-        if(path.isEmpty()) {
-          throw new IllegalArgumentException("Path cannot be empty!");
-        }
-      }
-
-      public void validateDate(String date) {
-        String regex = "[0-3][0-9].[0-1][0-9].[0-9][0-9][0-9][0-9]";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(date);
-        boolean matcherResult = matcher.matches();
-
-        if(date != "") {
-            if(matcherResult == false) {
-                throw new IllegalArgumentException("Date in wrong format!");
-            }
-        }    
       }
 
       public class AddActionListener implements ActionListener {
