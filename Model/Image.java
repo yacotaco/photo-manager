@@ -115,6 +115,21 @@ public class Image implements Comparator<Image> {
         } 
     }
 
+    public boolean dateLessThen(String inputValue) {
+        try {
+            if(this.date != "" && inputValue != "") {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+            Date date = sdf.parse(this.date); 
+            Date dateFromInput = sdf.parse(inputValue);
+            return date.before(dateFromInput);
+        } else {
+            return false;
+        }
+        } catch (ParseException e) {
+            return false;
+        } 
+    }
+
     private void validate() {
         if(path.isEmpty()) {
             throw new IllegalArgumentException("Path cannot be empty!");

@@ -428,6 +428,10 @@ public class Controller {
                         updateListLabels(subImageList);
                     break;
                     case "less than":
+                      subImageList = subImageStream
+                        .filter(image -> image.dateLessThen(inputValue))
+                        .collect(Collectors.toList());
+                        updateListLabels(subImageList);
                     break;
                     case "min value":
                       String label = new ImageSorter().getMinDate().getImageName();
