@@ -39,8 +39,8 @@ public class Image implements Comparator<Image> {
         this.location = location;
         this.date = date;
         this.tagList = tagList;
-        new Validator().validatePath(path);
-        new Validator().validateDate(date);
+        Validator.validatePath(path);
+        Validator.validateDate(date);
     }
 
     public String getImageName() {

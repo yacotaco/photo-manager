@@ -251,11 +251,11 @@ public class Controller {
             
               if(result == JOptionPane.OK_OPTION) {
                 try {
-                  new Validator().validatePath(view.getPathDialog());
+                  Validator.validatePath(view.getPathDialog());
                   imageList.get(imageClickedIndex).setPath(view.getPathDialog());
                   imageList.get(imageClickedIndex).setAuthor(view.getAuthorDialog());
                   imageList.get(imageClickedIndex).setLocation(view.getLocationDialog());
-                  new Validator().validateDate(view.getDateDialog());
+                  Validator.validateDate(view.getDateDialog());
                   imageList.get(imageClickedIndex).setDate(view.getDateDialog());
                   String[] tags = view.getTagsDialog().replaceAll("\\s", "").split(",");
                   List<String> listTags = Arrays.asList(tags);
