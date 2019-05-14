@@ -63,8 +63,9 @@ public class View {
     private JPanel searchDialog;
     private JComboBox searchComboListValueType;
     private JComboBox searchComboListCompareCondition;
-    private String[] selectSearchTypeValue = {"Path", "Author", "Location", "Date", "Tag", "--select--"};
-    private String[] selectSearchConditionValue = {"equal to", "greater than", "less than", "--select--", "min value", "max value" };
+    private String[] selectSearchTypeValue = { "Path", "Author", "Location", "Date", "Tag", "--select--" };
+    private String[] selectSearchConditionValue = { "equal to", "greater than", "less than", "--select--", "min value",
+            "max value" };
     private JTextField searchValueDialog;
     private JTextField addPathDialog;
     private JTextField addAuthorDialog;
@@ -74,63 +75,63 @@ public class View {
     private JPanel imagePane;
     private JLabel imageLabel;
     private JButton resetButton;
-    
-    /** 
-    @param frame holds all componanets of UI.
-    @param menu
-    @param menuBar
-    @param menuOpenItem
-    @param menuExitItem
-    @param menuSaveItem
-    @param splitPane
-    @param listScrollPane
-    @param pictureScrollPane
-    @param minimumSize
-    @param pane
-    @param list
-    @param listModel
-    @param editDialog
-    @param pathDialog
-    @param authorDialog
-    @param locationDialog
-    @param dateDialog
-    @param tagsDialog
-    @param listPopupMenu
-    @param listPopupMenuAdd
-    @param listPopupMenuDelete
-    @param listPopupMenuSearch
-    @param listPopupMenuSortAsc
-    @param subMenuSortAscAuthor
-    @param subMenuSortAscLocation
-    @param subMenuSortAscDate
-    @param listPopupMenuSortDesc
-    @param subMenuSortDescAuthor
-    @param subMenuSortDescLocation
-    @param subMenuSortDescDate
-    @param addDialog
-    @param searchDialog
-    @param searchComboListValueType
-    @param searchComboListCompareCondition
-    @param selectSearchTypeValue
-    @param selectSearchConditionValue
-    @param searchValueDialog
-    @param addPathDialog
-    @param addAuthorDialog
-    @param addLocationDialog
-    @param addDateDialog
-    @param addTagsDialog
-    @param imagePane
-    @param imageLabel
-    @param resetButton
-    */
-    
+
+    /**
+     * @param frame                           holds all componanets of UI.
+     * @param menu
+     * @param menuBar
+     * @param menuOpenItem
+     * @param menuExitItem
+     * @param menuSaveItem
+     * @param splitPane
+     * @param listScrollPane
+     * @param pictureScrollPane
+     * @param minimumSize
+     * @param pane
+     * @param list
+     * @param listModel
+     * @param editDialog
+     * @param pathDialog
+     * @param authorDialog
+     * @param locationDialog
+     * @param dateDialog
+     * @param tagsDialog
+     * @param listPopupMenu
+     * @param listPopupMenuAdd
+     * @param listPopupMenuDelete
+     * @param listPopupMenuSearch
+     * @param listPopupMenuSortAsc
+     * @param subMenuSortAscAuthor
+     * @param subMenuSortAscLocation
+     * @param subMenuSortAscDate
+     * @param listPopupMenuSortDesc
+     * @param subMenuSortDescAuthor
+     * @param subMenuSortDescLocation
+     * @param subMenuSortDescDate
+     * @param addDialog
+     * @param searchDialog
+     * @param searchComboListValueType
+     * @param searchComboListCompareCondition
+     * @param selectSearchTypeValue
+     * @param selectSearchConditionValue
+     * @param searchValueDialog
+     * @param addPathDialog
+     * @param addAuthorDialog
+     * @param addLocationDialog
+     * @param addDateDialog
+     * @param addTagsDialog
+     * @param imagePane
+     * @param imageLabel
+     * @param resetButton
+     */
+
     public View() {
         // Add frame parameters
         frame = new JFrame("PhotoManager");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 420);
         frame.setLocationRelativeTo(null);
-        
+
         // Add menu bar with items
         menuBar = new JMenuBar();
         menu = new JMenu("File");
@@ -142,7 +143,7 @@ public class View {
         menu.add(menuExitItem);
         menuBar.add(menu);
 
-        // drop down menu for list 
+        // drop down menu for list
         listPopupMenu = new JPopupMenu();
         listPopupMenuAdd = new JMenuItem("Add");
         listPopupMenuDelete = new JMenuItem("Delete");
@@ -174,8 +175,8 @@ public class View {
         listPopupMenu.add(listPopupMenuSearch);
         listPopupMenu.add(listPopupMenuSortAsc);
         listPopupMenu.add(listPopupMenuSortDesc);
-        
-        // search reset button 
+
+        // search reset button
         resetButton = new JButton("Reset Search");
         // panel
         pane = new JPanel(new BorderLayout());
@@ -248,29 +249,28 @@ public class View {
         searchDialog.add(Box.createVerticalStrut(10));
         searchDialog.add(searchValueDialog);
 
-        // image 
+        // image
         imagePane = new JPanel(new BorderLayout());
         imageLabel = new JLabel();
         imagePane.add(imageLabel);
-        
-         // scrole pane
+
+        // scrole pane
         listScrollPane = new JScrollPane(pane);
         pictureScrollPane = new JScrollPane(imagePane);
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-                           listScrollPane, pictureScrollPane);
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listScrollPane, pictureScrollPane);
 
         splitPane.setOneTouchExpandable(true);
         splitPane.setDividerLocation(150);
 
-        //Provide minimum sizes for the two components in the split pane
+        // Provide minimum sizes for the two components in the split pane
         minimumSize = new Dimension(100, 50);
         listScrollPane.setMinimumSize(minimumSize);
         pictureScrollPane.setMinimumSize(minimumSize);
 
         // split pane
-        frame.add(splitPane); 
+        frame.add(splitPane);
 
-        // menu bar 
+        // menu bar
         frame.setJMenuBar(menuBar);
         frame.setVisible(true);
     }
@@ -278,7 +278,7 @@ public class View {
     public JFrame getFrame() {
         return this.frame;
     }
-       
+
     public JMenuBar getMenuBar() {
         return this.menuBar;
     }
@@ -291,19 +291,19 @@ public class View {
         return this.menuExitItem;
     }
 
-    public void setListLabels(String element){
+    public void setListLabels(String element) {
         this.listModel.addElement(element);
     }
 
     public DefaultListModel getListModel() {
         return this.listModel;
     }
-    
-    public JList getList(){
+
+    public JList getList() {
         return this.list;
     }
 
-    public JPanel getEditDialog(){
+    public JPanel getEditDialog() {
         return this.editDialog;
     }
 
@@ -373,7 +373,7 @@ public class View {
 
     public JComboBox getSearchComboListCompareCondition() {
         return this.searchComboListCompareCondition;
-    } 
+    }
 
     public String getSearchValueDialog() {
         return this.searchValueDialog.getText();
@@ -455,8 +455,7 @@ public class View {
         this.imageLabel.setIcon(icon);
     }
 
-    public JButton getResetButton(){
+    public JButton getResetButton() {
         return this.resetButton;
     }
 }
-

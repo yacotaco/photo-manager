@@ -7,4 +7,3 @@ public class App {
         new Controller(view);
     }
 }
-

@@ -6,13 +6,14 @@ import java.util.regex.Matcher;
  */
 public class Validator {
 
-    public Validator() {};
+    public Validator() {
+    };
 
     public static void validatePath(String path) {
-        if(path.isEmpty()) {
-          throw new IllegalArgumentException("Path cannot be empty!");
+        if (path.isEmpty()) {
+            throw new IllegalArgumentException("Path cannot be empty!");
         }
-      }
+    }
 
     public static void validateDate(String date) {
         String regex = "[0-3][0-9].[0-1][0-9].[0-9][0-9][0-9][0-9]";
@@ -20,11 +21,11 @@ public class Validator {
         Matcher matcher = pattern.matcher(date);
         boolean matcherResult = matcher.matches();
 
-        if(date != "") {
-            if(matcherResult == false) {
+        if (date != "") {
+            if (matcherResult == false) {
                 throw new IllegalArgumentException("Date in wrong format!");
             }
-        }    
+        }
     }
 
 }
