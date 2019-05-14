@@ -39,7 +39,8 @@ public class Image implements Comparator<Image> {
         this.location = location;
         this.date = date;
         this.tagList = tagList;
-        validate();
+        new Validator().validatePath(path);
+        new Validator().validateDate(date);
     }
 
     public String getImageName() {
@@ -128,23 +129,6 @@ public class Image implements Comparator<Image> {
         } catch (ParseException e) {
             return false;
         } 
-    }
-
-    private void validate() {
-        if(path.isEmpty()) {
-            throw new IllegalArgumentException("Path cannot be empty!");
-        }
-
-        String regex = "[0-3][0-9].[0-1][0-9].[0-9][0-9][0-9][0-9]";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(date);
-        boolean matcherResult = matcher.matches();
-
-        if(date != "") {
-            if(matcherResult == false) {
-                throw new IllegalArgumentException("Date in wrong format!");
-            }
-        }    
     }
 
     public static Comparator<Image> authorComparator = new Comparator<Image>() {         
