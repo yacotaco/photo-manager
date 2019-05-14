@@ -77,6 +77,51 @@ public class View {
     
     /** 
     @param frame holds all componanets of UI.
+    @param menu
+    @param menuBar
+    @param menuOpenItem
+    @param menuExitItem
+    @param menuSaveItem
+    @param splitPane
+    @param listScrollPane
+    @param pictureScrollPane
+    @param minimumSize
+    @param pane
+    @param list
+    @param listModel
+    @param editDialog
+    @param pathDialog
+    @param authorDialog
+    @param locationDialog
+    @param dateDialog
+    @param tagsDialog
+    @param listPopupMenu
+    @param listPopupMenuAdd
+    @param listPopupMenuDelete
+    @param listPopupMenuSearch
+    @param listPopupMenuSortAsc
+    @param subMenuSortAscAuthor
+    @param subMenuSortAscLocation
+    @param subMenuSortAscDate
+    @param listPopupMenuSortDesc
+    @param subMenuSortDescAuthor
+    @param subMenuSortDescLocation
+    @param subMenuSortDescDate
+    @param addDialog
+    @param searchDialog
+    @param searchComboListValueType
+    @param searchComboListCompareCondition
+    @param selectSearchTypeValue
+    @param selectSearchConditionValue
+    @param searchValueDialog
+    @param addPathDialog
+    @param addAuthorDialog
+    @param addLocationDialog
+    @param addDateDialog
+    @param addTagsDialog
+    @param imagePane
+    @param imageLabel
+    @param resetButton
     */
     
     public View() {
