@@ -252,25 +252,22 @@ public class Controller {
             
               if(result == JOptionPane.OK_OPTION) {
                 try {
-                // update list view
-                validatePath(view.getPathDialog());
-                String imageName = getImageNameFromPath(view.getPathDialog());
-                System.out.println(imageClickedIndex + " " + imageName);
-                imageList.get(imageClickedIndex).setPath(view.getPathDialog());
-                imageList.get(imageClickedIndex).setAuthor(view.getAuthorDialog());
-                imageList.get(imageClickedIndex).setLocation(view.getLocationDialog());
-                validateDate(view.getDateDialog());
-                imageList.get(imageClickedIndex).setDate(view.getDateDialog());
-                String[] tags = view.getTagsDialog().replaceAll("\\s", "").split(",");
-                List<String> listTags = Arrays.asList(tags);
-                imageList.get(imageClickedIndex).setTag(listTags);
+                  validatePath(view.getPathDialog());
+                  String imageName = getImageNameFromPath(view.getPathDialog());
+                  System.out.println(imageClickedIndex + " " + imageName);
+                  imageList.get(imageClickedIndex).setPath(view.getPathDialog());
+                  imageList.get(imageClickedIndex).setAuthor(view.getAuthorDialog());
+                  imageList.get(imageClickedIndex).setLocation(view.getLocationDialog());
+                  validateDate(view.getDateDialog());
+                  imageList.get(imageClickedIndex).setDate(view.getDateDialog());
+                  String[] tags = view.getTagsDialog().replaceAll("\\s", "").split(",");
+                  List<String> listTags = Arrays.asList(tags);
+                  imageList.get(imageClickedIndex).setTag(listTags);
                 } catch (IllegalArgumentException e) {
                   JOptionPane.showMessageDialog(null, e.getMessage());
                 }
               }
-
-            }
-            
+            } 
           }
         }
       }
